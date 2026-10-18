@@ -12,31 +12,31 @@
           "status": "completed",
           "conclusion": "success",
           "number": 1,
-          "started_at": "2026-10-18T19:42:10Z",
-          "completed_at": "2026-10-18T19:42:10Z"
+          "started_at": "2026-10-18T19:44:29Z",
+          "completed_at": "2026-10-18T19:44:30Z"
         },
         {
           "name": "Run actions/checkout@v4",
-          "status": "completed",
-          "conclusion": "success",
+          "status": "in_progress",
+          "conclusion": null,
           "number": 2,
-          "started_at": "2026-10-18T19:42:10Z",
-          "completed_at": "2026-10-18T19:42:11Z"
+          "started_at": "2026-10-18T19:44:30Z",
+          "completed_at": null
         },
         {
           "name": "Install media tools",
-          "status": "completed",
-          "conclusion": "success",
+          "status": "pending",
+          "conclusion": null,
           "number": 3,
-          "started_at": "2026-10-18T19:42:11Z",
-          "completed_at": "2026-10-18T19:42:37Z"
+          "started_at": null,
+          "completed_at": null
         },
         {
           "name": "Download and encode the supplied videos",
-          "status": "in_progress",
+          "status": "pending",
           "conclusion": null,
           "number": 4,
-          "started_at": "2026-10-18T19:42:37Z",
+          "started_at": null,
           "completed_at": null
         },
         {
