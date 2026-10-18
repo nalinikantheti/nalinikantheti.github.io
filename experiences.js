@@ -32,7 +32,7 @@ addEventListener('popstate', () => navigateMedium(location.hash.slice(1),{update
 addEventListener('hashchange', () => {if(location.hash.slice(1) !== currentRoute) navigateMedium(location.hash.slice(1),{updateHistory:false});});
 navigateMedium(location.hash.slice(1) || 'home',{focus:false,updateHistory:false});
 // A small, visitor-controlled exhibition. No autoplay changes while reading.
-const featuredWorks = ['mother','bird','court','beetle'].map(id => works.find(work => work.id === id));
+const featuredWorks = ['bird','frog','beetle','fish'].map(id => works.find(work => work.id === id));
 let featuredIndex = 0;
 const livingImage = document.querySelector('#living-image');
 document.querySelectorAll('[data-art-step]').forEach(button => button.addEventListener('click', () => {
