@@ -20,7 +20,6 @@ function renderGallery(filter = 'All') {
     const number = document.createElement('span'); number.textContent = String(works.indexOf(work) + 1).padStart(2, '0'); meta.append(medium, number);
     const title = document.createElement('h3'); title.textContent = displayTitle(work.title);
     button.append(frame, meta, title);
-    if(work.patternCredit){const credit=document.createElement('span');credit.className='art-card-credit';credit.textContent=`Pattern: ${work.patternCredit}`;button.append(credit);}
     button.addEventListener('click', () => openArt(work)); return button;
   }));
   document.querySelector('#gallery-status').textContent = `${selection.length} works shown`;
