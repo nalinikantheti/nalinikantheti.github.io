@@ -4,7 +4,9 @@ function displayTitle(title) {
 }
 const gallery = document.querySelector('#gallery');
 function renderGallery(filter = 'All') {
-  document.querySelector('#gallery-category-description').hidden=filter!=='Sparkbugs';
+  const categoryDescription=document.querySelector('#gallery-category-description');
+  const categoryCopy={Sparkbugs:'Handmade beaded lighter holders',Crochet:'Handmade crochet'};
+  categoryDescription.hidden=!categoryCopy[filter];categoryDescription.textContent=categoryCopy[filter]||'';
   const selection = works.filter(work => filter === 'All' || work.medium === filter);
   gallery.replaceChildren(...selection.map(work => {
     const button = document.createElement('button');
@@ -31,7 +33,7 @@ function openArt(work) {
   const views=document.querySelector('#art-photo-views');
   views.replaceChildren();views.hidden=!work.images||work.images.length<2;
   if(work.images?.length>1)work.images.forEach((source,index)=>{
-    const button=document.createElement('button');button.type='button';button.textContent=index===0?'Front View':'Angled View';
+    const button=document.createElement('button');button.type='button';button.textContent=work.imageLabels?.[index]||(index===0?'Front View':'Angled View');
     button.setAttribute('aria-pressed',String(index===0));
     button.addEventListener('click',()=>{img.src=source;img.alt=work.imageAlts?.[index]||work.title;views.querySelectorAll('button').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));});
     views.append(button);
@@ -50,6 +52,10 @@ document.querySelectorAll('[data-filter]').forEach(button => button.addEventList
 document.querySelector('#opening-poem').textContent = poems[0].text;
 function openPoem(index) {
   const poem = poems[index]; document.querySelector('#poem-title').textContent = displayTitle(poem.title); document.querySelector('#poem-body').textContent = poem.text;
+  const artwork=document.querySelector('#poem-artwork');artwork.hidden=!poem.image;
+  const artworkImage=document.querySelector('#poem-artwork-image');
+  if(poem.image){artworkImage.src=poem.image;artworkImage.alt=poem.imageAlt;document.querySelector('#poem-artwork-caption').textContent=poem.imageCaption;}
+  else{artworkImage.removeAttribute('src');artworkImage.alt='';document.querySelector('#poem-artwork-caption').textContent='';}
   const dialog = document.querySelector('#poem-dialog'); dialog.setAttribute('aria-labelledby', 'poem-title'); showDialog(dialog);
   window.siteRouter?.poemOpened(index);
 }

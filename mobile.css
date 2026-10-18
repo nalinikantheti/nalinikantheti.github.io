@@ -22,3 +22,14 @@
 .art-photo-views[hidden],.gallery-category-description[hidden]{display:none}
 .art-photo-views button{min-height:44px;padding:10px 18px;border:1px solid #b79b62;border-radius:24px;background:transparent;color:#59603e;font-size:12px}
 .art-photo-views button[aria-pressed=true]{background:#35422b;color:#f6eddb;border-color:#35422b}
+
+/* A portrait and poem share one quiet exhibition space. */
+.closing.hero-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:48px;text-align:left}
+.hero-portrait{margin:0;padding:12px;border:1px solid #b79b62;outline:1px solid #b79b6255;outline-offset:5px;background:#f3e8d3}
+.hero-portrait img{display:block;width:100%;height:auto;max-height:510px;object-fit:contain}
+.hero-portrait figcaption{font:12px/1.6 'DM Sans',sans-serif;text-align:center;color:#59603e;padding:12px 4px 1px}
+.hero-poem-preview{min-width:0}.closing.hero-pair .hero-poem-preview p:not(.eyebrow){font-size:clamp(20px,2vw,25px)}
+#poem-artwork{margin:24px 0 30px;padding:12px;border:1px solid #b79b62;background:#f3e8d3}
+#poem-artwork[hidden]{display:none}#poem-artwork img{display:block;max-height:52dvh;width:100%;height:auto;object-fit:contain}
+#poem-artwork figcaption{font:12px/1.6 'DM Sans',sans-serif;color:#59603e;text-align:center;margin-top:12px}
+@media(max-width:700px){.closing.hero-pair{grid-template-columns:1fr;gap:30px}.hero-portrait{max-width:430px;width:100%;margin:auto}.hero-poem-preview{text-align:center}}

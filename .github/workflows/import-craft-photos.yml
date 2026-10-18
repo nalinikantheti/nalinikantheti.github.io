@@ -1,9 +1,6 @@
 name: Import cardigan waist beads and self portrait
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths: ['.github/workflows/import-craft-photos.yml']
 permissions:
   contents: write
 jobs:
