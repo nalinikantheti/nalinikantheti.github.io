@@ -1,8 +1,5 @@
 name: Prepare native portfolio videos
 on:
-  push:
-    branches: [main]
-    paths: ['.github/workflows/import-videos.yml']
   workflow_dispatch:
 concurrency:
   group: portfolio-native-video-import
@@ -51,7 +48,7 @@ jobs:
               video = f'<video controls playsinline preload="none" poster="{poster.as_posix()}" width="{width}" height="{height}" style="--video-ratio:{width}/{height}" aria-label="{title}"><source src="{output.as_posix()}" type="video/mp4">Your browser does not support video playback.</video>'
               pattern = r'<iframe\b[^>]*src="https://drive\.google\.com/file/d/' + re.escape(drive_id) + r'/preview"[^>]*></iframe>'
               markup, count = re.subn(pattern, lambda _: video, markup)
-              if count != 1:
+              if count != 1 and f'src="{output.as_posix()}"' not in markup:
                   raise ValueError(f'Expected one embed for {slug}, found {count}')
               metadata.append({'file': output.as_posix(), 'width': width, 'height': height, 'bytes': output.stat().st_size})
           # Only switch the live markup after all three videos validate.
