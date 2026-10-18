@@ -1,0 +1,55 @@
+name: Import cardigan waist beads and self portrait
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/import-craft-photos.yml']
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install image tools
+        run: python -m pip install gdown==5.2.0 Pillow==12.0.0 pillow-heif==1.1.1
+      - name: Import supplied photographs
+        shell: python
+        run: |
+          from pathlib import Path
+          import json, subprocess
+          from PIL import Image, ImageOps
+          import pillow_heif
+          pillow_heif.register_heif_opener()
+          sources=[
+            ('cardigan-01','1HZnElX_oDgK3e6PBIvl_qvy-wQa9cIOO'),
+            ('cardigan-02','1gv-c__2lxmtOsmRAEQ5gaA_ctBhm9QH1'),
+            ('cardigan-03','1K520XucOq2n8n3B8MqEgB2HYjvUAKUrt'),
+            ('waist-beads','1lYAY80i5DaYZBNQicqSpIc7YHq9J75cc'),
+            ('hero-self-portrait','1y64-vyEP-9tVu_8OiAevg6zSe4EJTvjT'),
+          ]
+          target=Path('assets/craft');target.mkdir(exist_ok=True)
+          status=[]
+          for name,source_id in sources:
+            try:
+              raw=Path('/tmp')/name
+              subprocess.run(['gdown',f'https://drive.google.com/uc?id={source_id}','-O',str(raw)],check=True)
+              with Image.open(raw) as image:
+                image=ImageOps.exif_transpose(image).convert('RGB')
+                original=image.size
+                image.thumbnail((2400,2400),Image.Resampling.LANCZOS)
+                image.save(target/f'{name}.webp',quality=92,method=6)
+                status.append({'name':name,'status':'ready','original_size':original,'size':image.size})
+            except Exception as error:
+              status.append({'name':name,'status':'failed','error':str(error)})
+          Path('.github/craft-import-status.json').write_text(json.dumps(status,indent=2)+'\n')
+      - name: Save imported photographs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/craft .github/craft-import-status.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Import supplied crochet waist bead and portrait photographs"
+          git pull --rebase origin main
+          git push origin HEAD:main
