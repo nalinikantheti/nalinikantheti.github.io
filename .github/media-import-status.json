@@ -1,0 +1,61 @@
+{
+  "status": "in_progress",
+  "conclusion": null,
+  "jobs": [
+    {
+      "name": "prepare",
+      "status": "in_progress",
+      "conclusion": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-18T19:42:10Z",
+          "completed_at": "2026-10-18T19:42:10Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-18T19:42:10Z",
+          "completed_at": "2026-10-18T19:42:11Z"
+        },
+        {
+          "name": "Install media tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-18T19:42:11Z",
+          "completed_at": "2026-10-18T19:42:37Z"
+        },
+        {
+          "name": "Download and encode the supplied videos",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 4,
+          "started_at": "2026-10-18T19:42:37Z",
+          "completed_at": null
+        },
+        {
+          "name": "Save native video assets",
+          "status": "pending",
+          "conclusion": null,
+          "number": 5,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null,
+          "number": 10,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    }
+  ]
+}
