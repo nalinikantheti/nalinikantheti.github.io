@@ -19,23 +19,26 @@ function renderGallery(filter = 'All') {
   }));
   document.querySelector('#gallery-status').textContent = `${selection.length} works shown`;
 }
-function showDialog(dialog) { dialog.showModal(); document.body.classList.add('modal-open'); }
+function showDialog(dialog) { if (!dialog.open) dialog.showModal(); document.body.classList.add('modal-open'); }
 function openArt(work) {
   const img = document.querySelector('#art-image'); img.src = work.image; img.alt = work.title;
   document.querySelector('#art-title').textContent = displayTitle(work.title);
   document.querySelector('#art-medium').textContent = work.medium;
   document.querySelector('#art-description').textContent = work.description;
   const dialog = document.querySelector('#art-dialog'); dialog.setAttribute('aria-labelledby', 'art-title'); showDialog(dialog);
+  window.siteRouter?.artOpened(work);
 }
 document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
   document.querySelectorAll('[data-filter]').forEach(item => { item.classList.toggle('active', item === button); item.setAttribute('aria-pressed', String(item === button)); });
   renderGallery(button.dataset.filter);
 }));
 document.querySelector('#opening-poem').textContent = poems[0].text;
-document.querySelectorAll('[data-poem]').forEach(button => button.addEventListener('click', () => {
-  const poem = poems[Number(button.dataset.poem)]; document.querySelector('#poem-title').textContent = displayTitle(poem.title); document.querySelector('#poem-body').textContent = poem.text;
+function openPoem(index) {
+  const poem = poems[index]; document.querySelector('#poem-title').textContent = displayTitle(poem.title); document.querySelector('#poem-body').textContent = poem.text;
   const dialog = document.querySelector('#poem-dialog'); dialog.setAttribute('aria-labelledby', 'poem-title'); showDialog(dialog);
-}));
+  window.siteRouter?.poemOpened(index);
+}
+document.querySelectorAll('[data-poem]').forEach(button => button.addEventListener('click', () => openPoem(Number(button.dataset.poem))));
 document.querySelectorAll('dialog').forEach(dialog => {
   dialog.querySelector('.close')?.addEventListener('click', () => dialog.close());
   dialog.addEventListener('close', () => document.body.classList.remove('modal-open'));

@@ -2,7 +2,8 @@ const experiencePanels = [...document.querySelectorAll('.experience-panel')];
 const mediumLabels = {home:'Home',work:'Visual Art',writing:'Writing',henna:'Henna',music:'Music',contact:'Contact'};
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let currentRoute = 'home';
-function navigateMedium(route, {focus = true, updateHistory = true} = {}) {
+function navigateMedium(route, {focus = true, updateHistory = true, fromRouter = false} = {}) {
+  if (window.siteRouter && !fromRouter) return window.siteRouter.navigate(route,{focus});
   if (route === 'poetry') route = 'writing';
   if (route === 'jewelry') route = 'work';
   if (!Object.hasOwn(mediumLabels, route)) route = 'home';
@@ -31,9 +32,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener(
   const route = anchorRoutes[link.getAttribute('href').slice(1)];
   if (route) {event.preventDefault(); navigateMedium(route);}
 }));
-addEventListener('popstate', () => navigateMedium(location.hash.slice(1),{updateHistory:false}));
-addEventListener('hashchange', () => {if(location.hash.slice(1) !== currentRoute) navigateMedium(location.hash.slice(1),{updateHistory:false});});
-navigateMedium(location.hash.slice(1) || 'home',{focus:false,updateHistory:false});
 // A small, visitor-controlled exhibition. No autoplay changes while reading.
 const featuredWorks = ['beetle','bird','frog','fish'].map(id => works.find(work => work.id === id));
 let featuredIndex = 0;

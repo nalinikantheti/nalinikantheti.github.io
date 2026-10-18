@@ -47,6 +47,7 @@ function selectWritingTab(tab) {
     const panel = document.getElementById(item.getAttribute('aria-controls')); panel.hidden = !active;
     if(active && !reducedMotion.matches) panel.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:300});
   });
+  window.siteRouter?.writingTabChanged(tab);
 }
 writingTabs.forEach(tab => {
   tab.addEventListener('click', () => selectWritingTab(tab));
@@ -138,6 +139,7 @@ function renderStory(storyIndex,chapterIndex=0,{ratio=0,focus=false}={}) {
     restoringPlace=false;savePlace({ratio});
     if(focus)heading.focus({preventScroll:true});
   };
+  window.siteRouter?.storyChanged(storyIndex,chapterIndex);
   requestAnimationFrame(()=>requestAnimationFrame(restore));
 }
 function openStory(index) {
