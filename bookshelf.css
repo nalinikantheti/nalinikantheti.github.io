@@ -1,6 +1,6 @@
 /* A quiet home-page discovery, outside the main navigation. */
 .bookshelf-nook{margin-top:20px;display:flex;align-items:center;position:relative;z-index:1}
-.bookshelf-door{display:grid;place-items:center;width:94px;min-height:82px;padding:4px;border:0;background:transparent;color:#967344;opacity:.76;cursor:pointer;transition:opacity .25s,transform .25s}
+.bookshelf-door{display:grid;place-items:center;width:94px;min-height:82px;padding:4px;border:0;background:transparent;color:#967344;opacity:.65;cursor:pointer;transition:opacity .25s,transform .25s}
 .bookshelf-door svg{display:block;width:88px;height:76px;filter:drop-shadow(0 3px 3px #5b452329)}
 .bookshelf-door:hover{opacity:1;transform:translateY(-3px) rotate(-3deg)}
 .bookshelf-door:focus-visible{opacity:1;outline:2px solid #a45b46;outline-offset:4px;border-radius:18px}
