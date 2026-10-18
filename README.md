@@ -34,4 +34,6 @@ The selected layout now uses cream as the primary background with plum typograph
 
 The current visual treatment is in `miniature.css`: warm ivory, olive, terracotta, and gold; three-column arched cards with matching floral frames. `assets/garden-frame.png` is generated decorative background scenery, not an artwork attributed to Nalini. Card artwork and jewelry photographs remain from the supplied portfolio; poetry is quoted from the supplied original. The henna cover uses the supplied Drive image and a decorative fallback if the external image cannot load.
 
-Homepage card covers now use coordinated decorative lotus/paisley illustrations instead of portfolio images. The first featured artwork is The Beetle Study; all four carousel entries are digital animal illustrations. `assets/tiger-engraving.png` is a generated decorative footer ornament, not portfolio artwork.
+Homepage card covers now use coordinated decorative lotus/paisley illustrations instead of portfolio images. The first featured artwork is Beetlejuice; all four carousel entries are digital animal illustrations. `assets/tiger-engraving.png` is a generated decorative footer ornament, not portfolio artwork.
+
+The six category cards now use a coordinated generated still-life image sheet (`assets/category-covers.png`) as decorative navigation covers; these are not the artist’s portfolio work. The Music section explicitly titles the featured video “I’m So Fucking Cool,” with the existing artist and sound-design credits retained. The paisley beside the homepage name has been removed.
