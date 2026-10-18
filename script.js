@@ -1,3 +1,7 @@
+function displayTitle(title) {
+  const smallWords = new Set(['a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'in', 'of', 'on', 'or', 'the', 'to']);
+  return title.split(' ').map((word, index) => index > 0 && smallWords.has(word.toLowerCase()) ? word.toLowerCase() : word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+}
 const gallery = document.querySelector('#gallery');
 function renderGallery(filter = 'All') {
   const selection = works.filter(work => filter === 'All' || work.medium === filter);
@@ -10,7 +14,7 @@ function renderGallery(filter = 'All') {
     const meta = document.createElement('span'); meta.className = 'meta';
     const medium = document.createElement('span'); medium.textContent = work.medium === 'Digital' ? 'Digital illustration' : work.medium;
     const number = document.createElement('span'); number.textContent = String(works.indexOf(work) + 1).padStart(2, '0'); meta.append(medium, number);
-    const title = document.createElement('h3'); title.textContent = work.title;
+    const title = document.createElement('h3'); title.textContent = displayTitle(work.title);
     button.append(frame, meta, title); button.addEventListener('click', () => openArt(work)); return button;
   }));
   document.querySelector('#gallery-status').textContent = `${selection.length} works shown`;
@@ -18,7 +22,7 @@ function renderGallery(filter = 'All') {
 function showDialog(dialog) { dialog.showModal(); document.body.classList.add('modal-open'); }
 function openArt(work) {
   const img = document.querySelector('#art-image'); img.src = work.image; img.alt = work.title;
-  document.querySelector('#art-title').textContent = work.title;
+  document.querySelector('#art-title').textContent = displayTitle(work.title);
   document.querySelector('#art-medium').textContent = work.medium;
   document.querySelector('#art-description').textContent = work.description;
   const dialog = document.querySelector('#art-dialog'); dialog.setAttribute('aria-labelledby', 'art-title'); showDialog(dialog);
@@ -29,7 +33,7 @@ document.querySelectorAll('[data-filter]').forEach(button => button.addEventList
 }));
 document.querySelector('#opening-poem').textContent = poems[0].text;
 document.querySelectorAll('[data-poem]').forEach(button => button.addEventListener('click', () => {
-  const poem = poems[Number(button.dataset.poem)]; document.querySelector('#poem-title').textContent = poem.title; document.querySelector('#poem-body').textContent = poem.text;
+  const poem = poems[Number(button.dataset.poem)]; document.querySelector('#poem-title').textContent = displayTitle(poem.title); document.querySelector('#poem-body').textContent = poem.text;
   const dialog = document.querySelector('#poem-dialog'); dialog.setAttribute('aria-labelledby', 'poem-title'); showDialog(dialog);
 }));
 document.querySelectorAll('dialog').forEach(dialog => {

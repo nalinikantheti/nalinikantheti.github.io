@@ -1,5 +1,5 @@
 const experiencePanels = [...document.querySelectorAll('.experience-panel')];
-const mediumLabels = {home:'Home',work:'Visual art',jewelry:'Jewelry',poetry:'Poetry',henna:'Henna',music:'Music',contact:'Contact'};
+const mediumLabels = {home:'Home',work:'Visual Art',jewelry:'Jewelry',poetry:'Poetry',henna:'Henna',music:'Music',contact:'Contact'};
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let currentRoute = 'home';
 function navigateMedium(route, {focus = true, updateHistory = true} = {}) {
@@ -39,7 +39,7 @@ document.querySelectorAll('[data-art-step]').forEach(button => button.addEventLi
   featuredIndex = (featuredIndex + Number(button.dataset.artStep) + featuredWorks.length) % featuredWorks.length;
   const work = featuredWorks[featuredIndex];
   livingImage.src = work.image; livingImage.alt = work.title;
-  document.querySelector('#living-title').textContent = work.title;
+  document.querySelector('#living-title').textContent = displayTitle(work.title);
   document.querySelector('#art-position').textContent = `${String(featuredIndex+1).padStart(2,'0')} / 04`;
   if(!reducedMotion.matches) livingImage.animate([{opacity:.15,transform:'scale(.97)'},{opacity:1,transform:'scale(1)'}],{duration:550,easing:'ease-out'});
 }));

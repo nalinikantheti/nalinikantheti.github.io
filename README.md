@@ -29,3 +29,5 @@ The Henna section contains four artist-supplied Google Drive photographs, served
 `index.html` is the selected interactive layout, using cream (#f1e7da), plum (#54303e), rose (#94505e), clay (#be907e), and antique gold (#bda174). The alternate design pages and version tabs have been removed.
 
 `experiences.css` and `experiences.js` provide the medium navigation, featured-art viewer, botanical motion, direct hash links, and browser Back/Forward support. Motion respects `prefers-reduced-motion`; artwork tilt is enabled only for fine pointers. Gallery, poetry, booking and form behavior remain in `script.js`, with artwork entries and poems in `portfolio-data.js`.
+
+The selected layout now uses cream as the primary background with plum typography and rose, clay, and gold details. All six homepage covers share the same locally hosted ornamental tile rather than mixing photographs and illustrations. The featured viewer continues to show the artist’s own work. Headings and artwork display labels use consistent title capitalization; poem text is preserved verbatim.
