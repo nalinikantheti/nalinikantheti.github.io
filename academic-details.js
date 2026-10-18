@@ -16,12 +16,12 @@ const academicDetails = {
   },
   'paper-four': {
     title: 'Laughter and Human Nature',
-    type: 'Literature Review',
-    description: 'A review of evolutionary and psychological research on laughter, authenticity, comedy, and grief, including the distinction between spontaneous Duchenne laughter and social laughter.'
+    type: 'Humorous Literature Review',
+    description: 'A tongue-in-cheek, research-informed take on the literature review, exploring laughter, authenticity, comedy, and grief through a playful, informal voice.'
   },
   'paper-five': {
     title: 'Seriously Unserious',
-    type: 'Reflective Essay',
+    type: 'Popular Writing',
     description: 'A case for embracing humor and the ability to laugh at ourselves, examining social rules around laughter, the fear of looking foolish, and humor’s role in human connection.'
   },
   'paper-six': {

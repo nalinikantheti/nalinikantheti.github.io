@@ -1,3 +1,6 @@
+// Keep the featured reading order independent of document imports and saved paper IDs.
+const academicOrder = ['paper-six','paper-five','paper-one','paper-two','paper-three','paper-four'];
+academicPapers.sort((a,b)=>academicOrder.indexOf(a.id)-academicOrder.indexOf(b.id));
 const academicReader = document.querySelector('#academic-dialog');
 let currentPaper = 0;
 let paperRestore = false;
@@ -36,7 +39,7 @@ function savePaperPlace({ratio=academicReader.open?paperRatio():lastPaperRatio,f
 // Convert the imported document into a restricted reader fragment. Never execute document markup.
 function academicFragment(paper) {
   const parsed=new DOMParser().parseFromString(paper.html,'text/html');
-  const allowed=new Set(['P','EM','STRONG','B','I','U','S','MARK','BLOCKQUOTE','BR','HR','H1','H2','H3','H4','H5','H6','UL','OL','LI','A','IMG','TABLE','THEAD','TBODY','TFOOT','TR','TH','TD','CAPTION','SUP','SUB','SPAN','DIV','FIGURE','FIGCAPTION','MATH','MROW','MI','MN','MO','MSUP','MSUB','MFRAC','MSQRT','MTEXT','SEMANTICS','ANNOTATION']);
+  const allowed=new Set(['P','EM','STRONG','B','I','U','S','BLOCKQUOTE','BR','HR','H1','H2','H3','H4','H5','H6','UL','OL','LI','A','IMG','TABLE','THEAD','TBODY','TFOOT','TR','TH','TD','CAPTION','SUP','SUB','SPAN','DIV','FIGURE','FIGCAPTION','MATH','MROW','MI','MN','MO','MSUP','MSUB','MFRAC','MSQRT','MTEXT','SEMANTICS','ANNOTATION']);
   const dangerous=new Set(['SCRIPT','STYLE','IFRAME','OBJECT','EMBED','FORM','INPUT','BUTTON','LINK','META']);
   const prefix=`paper-${paper.id}-`;
   function safeNode(node) {
