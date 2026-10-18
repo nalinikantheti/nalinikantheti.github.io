@@ -1,0 +1,46 @@
+name: Import arm-cuff showcase
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import-arm-cuffs.yml'
+permissions:
+  contents: write
+concurrency:
+  group: import-arm-cuffs
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install media tools
+        run: |
+          python -m pip install gdown==5.2.0
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+      - name: Import vertical arm-cuff video
+        shell: python
+        run: |
+          from pathlib import Path
+          import json, subprocess
+          media=Path('assets/media')
+          media.mkdir(exist_ok=True)
+          original='/tmp/arm-cuffs-source'
+          subprocess.run(['gdown','https://drive.google.com/uc?id=188ZsbJz8CWKqGbl3t4ScVds1iyjuZFof','-O',original],check=True)
+          output=media/'arm-cuffs.mp4'
+          subprocess.run(['ffmpeg','-y','-i',original,'-map','0:v:0','-map','0:a:0?','-vf',"scale=w='min(720,iw)':h=-2,fps=30",'-c:v','libx264','-preset','veryfast','-crf','28','-pix_fmt','yuv420p','-c:a','aac','-b:a','128k','-movflags','+faststart',str(output)],check=True)
+          if output.stat().st_size>90*1024*1024: raise ValueError('Video exceeds repository budget')
+          subprocess.run(['ffmpeg','-y','-ss','1','-i',str(output),'-frames:v','1','-q:v','3',str(media/'arm-cuffs.jpg')],check=True)
+          probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-select_streams','v:0','-show_entries','stream=width,height:format=duration','-of','json',str(output)]))
+          (media/'arm-cuffs.json').write_text(json.dumps(probe,indent=2)+'\n')
+      - name: Save video assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/media/arm-cuffs.*
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Import mobile-ready custom arm-cuff showcase video"
+          git pull --rebase origin main
+          git push origin HEAD:main
