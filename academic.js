@@ -32,8 +32,7 @@ function savePaperPlace({ratio=academicReader.open?paperRatio():lastPaperRatio,f
   clearTimeout(paperSaveTimer);
   try {
     localStorage.setItem(`nalini-academic-v1:${academicPapers[currentPaper].id}`,JSON.stringify({ratio,finished,updatedAt:Date.now()}));
-    document.querySelector('#paper-save-status').textContent='Place saved in this browser on this device';
-  } catch {document.querySelector('#paper-save-status').textContent='Saving is unavailable in this browser';}
+  } catch {}
   updatePaperCard(currentPaper);
 }
 // Convert the imported document into a restricted reader fragment. Never execute document markup.
