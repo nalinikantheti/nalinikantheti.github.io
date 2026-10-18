@@ -24,3 +24,5 @@
 .honeypot{display:none!important}button:disabled{opacity:.65;cursor:wait}#form-status{font-size:12px;line-height:1.7}
 @media(max-width:600px){.hero-copy h1{font-size:80px}.hero-flower{width:80px;height:80px;right:0;bottom:0}.small-flower{width:85px;height:85px;left:auto;right:0;top:65px}.art-frame{padding:13px}.hero-intro{font-size:8px;letter-spacing:.6px}.closing>span{display:none}}
 .freestyle{background:#34243a;color:var(--paper);border-block:5px double #b58f59}.freestyle .section-top h2 em{color:#d8b277}.freestyle .eyebrow{color:#d8b277}.video-frame{max-width:840px;margin:15px auto 0;padding:12px;border:1px solid #b58f59;outline:1px solid #b58f5966;outline-offset:6px;background:#201823}.video-frame iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#201823}.video-note{font-size:11px;text-align:center;margin:26px 0 0;line-height:1.9;color:#d7cbbf}.video-note a{color:#e0bd85}@media(max-width:600px){.video-frame{padding:6px}.video-frame iframe{aspect-ratio:3/4}nav{max-width:250px}}
+
+.freestyle .video-note + .video-frame{margin-top:45px}
