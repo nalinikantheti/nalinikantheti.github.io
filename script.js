@@ -61,3 +61,24 @@ document.querySelector('#inquiry-form').addEventListener('submit', async event =
 });
 document.querySelector('#year').textContent = new Date().getFullYear();
 renderGallery();
+
+// Drive-hosted henna photographs retain a direct link if embedding is unavailable.
+document.querySelectorAll('.henna-photo').forEach(button => {
+  const img = button.querySelector('img');
+  function markUnavailable() {
+    img.hidden = true;
+    button.querySelector('.henna-image-fallback').hidden = false;
+    button.disabled = true;
+  }
+  img.addEventListener('error', markUnavailable);
+  if (img.complete && img.naturalWidth === 0) markUnavailable();
+  button.addEventListener('click', () => openArt({
+    image: button.dataset.hennaImage,
+    title: button.dataset.hennaTitle,
+    medium: 'Henna / Kantheti Designs',
+    description: ''
+  }));
+});
+document.querySelector('#henna-booking').addEventListener('click', () => {
+  document.querySelector('#inquiry-form [name="type"]').value = 'Henna booking';
+});
