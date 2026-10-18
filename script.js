@@ -37,24 +37,27 @@ document.querySelectorAll('dialog').forEach(dialog => {
   dialog.addEventListener('close', () => document.body.classList.remove('modal-open'));
   dialog.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });
 });
-function prepareInquiry(download = false) {
-  const form = document.querySelector('#inquiry-form');
-  if (!form.reportValidity()) return;
-  const values = Object.fromEntries(new FormData(form));
-  const text = `ART / HENNA INQUIRY — NALINI K.\n\nName: ${values.name}\nEmail: ${values.email}\nRequest: ${values.type}\nIdeal date: ${values.date || 'Flexible'}\nLocation: ${values.location || 'Not specified'}\n\n${values.details}\n\nThis request has not been sent. Availability and pricing must be confirmed with the artist.`;
-  if (!download) {
-    const emailLink = document.createElement('a');
-    emailLink.href = `mailto:kanthetidesigns@gmail.com?subject=${encodeURIComponent(values.type + ' inquiry from ' + values.name)}&body=${encodeURIComponent(text)}`;
-    emailLink.target = '_blank'; emailLink.rel = 'noopener';
-    document.body.append(emailLink); emailLink.click(); emailLink.remove();
-    document.querySelector('#form-status').textContent = 'Your email app will open with a draft. Please send it there to complete your inquiry. If it doesn’t open, download your request and email it to kanthetidesigns@gmail.com.';
-    return;
+document.querySelector('#inquiry-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  const form = event.currentTarget;
+  if (!form.reportValidity() || form.elements._honey.value) return;
+  const button = form.querySelector('[type="submit"]');
+  const status = document.querySelector('#form-status');
+  button.disabled = true; button.textContent = 'Sending…'; status.textContent = '';
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(new FormData(form)))
+    });
+    const result = await response.json();
+    if (!response.ok || (result.success !== true && result.success !== 'true')) throw new Error('Submission failed');
+    status.textContent = 'Your inquiry was submitted. Thank you. If you don’t hear back, email kanthetidesigns@gmail.com directly.';
+    form.reset();
+  } catch {
+    status.textContent = 'Your inquiry could not be submitted. Your details are still here. Please try again or email kanthetidesigns@gmail.com directly.';
+  } finally {
+    button.disabled = false; button.textContent = 'Send inquiry ↗';
   }
-  const url = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
-  const link = document.createElement('a'); link.href = url; link.download = 'nalini-art-inquiry.txt'; document.body.append(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
-  document.querySelector('#form-status').textContent = 'Your request file is ready. Keep it to share with Nalini. No message has been sent.';
-}
-document.querySelector('#inquiry-form').addEventListener('submit', event => { event.preventDefault(); prepareInquiry(); });
-document.querySelector('#download-request').addEventListener('click', () => prepareInquiry(true));
+});
 document.querySelector('#year').textContent = new Date().getFullYear();
 renderGallery();

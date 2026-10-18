@@ -13,7 +13,9 @@ From this directory, run `python3 -m http.server 8000 --bind 127.0.0.1`.
 - `index.html` contains the introduction, section copy, and inquiry form.
 - `styles.css` contains the responsive layout and color palette.
 
-The inquiry form validates required fields and opens a prepared email to kanthetidesigns@gmail.com. The visitor must send it from their email application. A download button provides the same inquiry as a text file. No submission backend or automatic booking confirmation is configured, and form data is not stored by the site.
+The inquiry form posts JSON to FormSubmit and shows success or error messages on the page. It forwards inquiries to kanthetidesigns@gmail.com after the recipient completes FormSubmit’s one-time email activation. The first live submission triggers an activation email; follow its confirmation link, then submit a fresh test inquiry to verify delivery. Activation and inbox delivery have not been verified from this workspace. Visitor details are processed by FormSubmit. Failed requests retain entered details and show a direct email alternative.
+
+Freestyle videos are pending: this workspace has no access to the artist’s iCloud Drive. Add only supplied files or accessible public links.
 
 Fonts are loaded from Google Fonts with local serif and sans-serif fallbacks. Artwork is hosted locally.
 
