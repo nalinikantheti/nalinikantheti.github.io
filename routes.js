@@ -2,7 +2,7 @@
 (() => {
   const slug = text => text.normalize('NFKD').replace(/[’']/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   const workSlug = work => slug(work.title);
-  const legacyWorkSlugs = {'collected-charms':'charms','pearls-talismans':'pearls','a-little-garden':'garden'};
+  const legacyWorkSlugs = {'collected-charms':'charms','pearls-talismans':'pearls','a-little-garden':'garden','pink-sparkbug':'sparkbug-pink','woodland-sparkbug':'sparkbug-woodland','green-sparkbug':'sparkbug-green','checkered-sparkbug':'sparkbug-checkered'};
   const storySlug = index => slug(stories[index].title);
   const paperSlug = index => slug(academicTitle(academicPapers[index]));
   const writingTabId = subsection => subsection==='academic'?'#academic-tab':subsection==='stories'?'#stories-tab':'#poetry-tab';
