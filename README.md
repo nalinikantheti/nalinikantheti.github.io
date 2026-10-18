@@ -22,4 +22,4 @@ Fonts are loaded from Google Fonts with local serif and sans-serif fallbacks. Ar
 Before publishing, review artwork titles (carried over from the reference PDF), biographical copy, poems, and the contact address. Deployment follows this repository's GitHub Pages settings; local edits do not publish automatically until committed and deployed.
 
 
-The Henna section contains four artist-supplied Google Drive photographs, served using Google’s image URLs with direct Drive links as fallbacks. Each source file must allow “Anyone with the link — Viewer.” The workspace proxy blocks Google-hosted images, so live image loading has not been verified here. Images can be downloaded into `assets/` later for independent hosting when the originals become accessible.
+The Henna section contains four artist-supplied Google Drive photographs, served using Google’s image URLs without visible Drive links. Each source file must allow “Anyone with the link — Viewer.” The workspace proxy blocks Google-hosted images, so live image loading has not been verified here. Images can be downloaded into `assets/` later for independent hosting when the originals become accessible.
