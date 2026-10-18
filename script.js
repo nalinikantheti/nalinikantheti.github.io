@@ -4,13 +4,14 @@ function displayTitle(title) {
 }
 const gallery = document.querySelector('#gallery');
 function renderGallery(filter = 'All') {
+  document.querySelector('#gallery-category-description').hidden=filter!=='Sparkbugs';
   const selection = works.filter(work => filter === 'All' || work.medium === filter);
   gallery.replaceChildren(...selection.map(work => {
     const button = document.createElement('button');
     button.className = 'art-card';
     button.setAttribute('aria-label', `View ${work.title}`);
     const frame = document.createElement('span'); frame.className = 'art-frame';
-    const img = document.createElement('img'); img.src = work.image; img.alt = work.title; img.loading = 'lazy'; frame.append(img);
+    const img = document.createElement('img'); img.src = work.image; img.alt = work.imageAlts?.[0] || work.title; img.loading = 'lazy'; frame.append(img);
     if(work.video){const play=document.createElement('span');play.className='art-video-label';play.textContent='▶ Watch Showcase';frame.append(play);}
     const meta = document.createElement('span'); meta.className = 'meta';
     const medium = document.createElement('span'); medium.textContent = work.medium === 'Digital' ? 'Digital illustration' : work.medium;
@@ -26,7 +27,15 @@ function openArt(work) {
   const video=document.querySelector('#art-video');
   video.pause();video.removeAttribute('src');video.hidden=!work.video;img.hidden=Boolean(work.video);
   if(work.video){video.setAttribute('aria-label',work.title+' — video showcase');video.poster=work.image;video.src=work.video;video.load();}
-  else{img.src=work.image;img.alt=work.title;}
+  else{img.src=work.image;img.alt=work.imageAlts?.[0]||work.title;}
+  const views=document.querySelector('#art-photo-views');
+  views.replaceChildren();views.hidden=!work.images||work.images.length<2;
+  if(work.images?.length>1)work.images.forEach((source,index)=>{
+    const button=document.createElement('button');button.type='button';button.textContent=index===0?'Front View':'Angled View';
+    button.setAttribute('aria-pressed',String(index===0));
+    button.addEventListener('click',()=>{img.src=source;img.alt=work.imageAlts?.[index]||work.title;views.querySelectorAll('button').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));});
+    views.append(button);
+  });
   document.querySelector('#art-title').textContent = displayTitle(work.title);
   document.querySelector('#art-medium').textContent = work.medium;
   document.querySelector('#art-description').textContent = work.description;
@@ -36,6 +45,7 @@ function openArt(work) {
 document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
   document.querySelectorAll('[data-filter]').forEach(item => { item.classList.toggle('active', item === button); item.setAttribute('aria-pressed', String(item === button)); });
   renderGallery(button.dataset.filter);
+  window.siteRouter?.artFilterChanged(button.dataset.filter);
 }));
 document.querySelector('#opening-poem').textContent = poems[0].text;
 function openPoem(index) {

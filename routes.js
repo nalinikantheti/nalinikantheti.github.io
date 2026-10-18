@@ -74,9 +74,11 @@
   function applyFallback(route,focus,subsection) {
     closeOtherDialogs(null);navigateMedium(route,{focus,updateHistory:false,fromRouter:true});
     if(route==='writing')selectWritingTab(document.querySelector(writingTabId(subsection)));
+    if(route==='work'&&subsection){const filter=[...document.querySelectorAll('[data-filter]')].find(button=>slug(button.dataset.filter)===subsection);filter?.click();}
   }
   window.siteRouter={
     navigate(path,{focus=true,replace=false}={}) {write(path,{replace});apply({focus});},
+    artFilterChanged(filter) {if(!applying)write(filter==='All'?'work':`work/${slug(filter)}`);},
     artOpened(work) {
       const known=works.find(item=>item.id===work.id);
       const photo=[...document.querySelectorAll('.henna-photo')].findIndex(item=>item.dataset.hennaImage===work.image);
@@ -92,7 +94,7 @@
   document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('close',()=>{
     if(dialog.open||applying)return;
     const path=hash();
-    if(dialog.id==='art-dialog'&&(path.startsWith('art/')||path.startsWith('henna/photo/'))){const base=path.startsWith('art/')?'work':'henna';write(base,{replace:true});title(mediumLabels[base]);}
+    if(dialog.id==='art-dialog'&&(path.startsWith('art/')||path.startsWith('henna/photo/'))){const base=path.startsWith('art/')?'work':'henna';const filter=document.querySelector('[data-filter].active')?.dataset.filter;write(base==='work'&&filter&&filter!=='All'?`work/${slug(filter)}`:base,{replace:true});title(mediumLabels[base]);}
     if(dialog.id==='poem-dialog'&&path.startsWith('writing/poetry/')){write('writing/poetry',{replace:true});title('Writing');}
     if(dialog.id==='academic-dialog'&&path.startsWith('writing/academic/')){write('writing/academic',{replace:true});title('Academic Writing');}
     if(dialog.id==='story-dialog'&&path.startsWith('writing/stories/')){write('writing/stories',{replace:true});title('Writing');}
