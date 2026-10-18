@@ -5,7 +5,7 @@ function displayTitle(title) {
 const gallery = document.querySelector('#gallery');
 function renderGallery(filter = 'All') {
   const categoryDescription=document.querySelector('#gallery-category-description');
-  const categoryCopy={Sparkbugs:'Handmade beaded lighter holders',Crochet:'Handmade crochet'};
+  const categoryCopy={Sparkbugs:'Handmade beaded lighter holders'};
   categoryDescription.hidden=!categoryCopy[filter];categoryDescription.textContent=categoryCopy[filter]||'';
   const selection = works.filter(work => filter === 'All' || work.medium === filter);
   gallery.replaceChildren(...selection.map(work => {

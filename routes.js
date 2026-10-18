@@ -2,7 +2,7 @@
 (() => {
   const slug = text => text.normalize('NFKD').replace(/[’']/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   const workSlug = work => slug(work.title);
-  const legacyWorkSlugs = {'collected-charms':'charms','pearls-talismans':'pearls','a-little-garden':'garden','pink-sparkbug':'sparkbug-pink','woodland-sparkbug':'sparkbug-woodland','green-sparkbug':'sparkbug-green','checkered-sparkbug':'sparkbug-checkered'};
+  const legacyWorkSlugs = {'collected-charms':'charms','pearls-talismans':'pearls','a-little-garden':'garden','custom-arm-cuffs':'arm-cuffs','pink-sparkbug':'sparkbug-pink','woodland-sparkbug':'sparkbug-woodland','green-sparkbug':'sparkbug-green','checkered-sparkbug':'sparkbug-checkered'};
   const storySlug = index => slug(stories[index].title);
   const paperSlug = index => slug(academicTitle(academicPapers[index]));
   const writingTabId = subsection => subsection==='academic'?'#academic-tab':subsection==='stories'?'#stories-tab':'#poetry-tab';
@@ -121,13 +121,6 @@
       field.value=url.href;field.focus();field.select();announce('Select and copy the link');
     }
   }));
-  // Optional direct links for each video; these do not autoplay media.
-  [...document.querySelectorAll('.featured-film,.video-card')].forEach((card,index)=>{
-    const path=['music/im-so-fucking-cool','music/freestyle-01','music/freestyle-02'][index];
-    const button=document.createElement('button');button.type='button';button.className='copy-link video-share';button.textContent='Copy Video Link';
-    button.addEventListener('click',async()=>{const url=new URL(location.href);url.search='';url.hash=path;try{await navigator.clipboard.writeText(url.href);announce('Video link copied');}catch{window.siteRouter.navigate(path);announce('Copy this page’s address to share the video');}});
-    (card.querySelector('.film-info')||card).append(button);
-  });
   addEventListener('popstate',()=>apply());
   addEventListener('hashchange',()=>apply());
   apply({focus:false});
