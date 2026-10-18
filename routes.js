@@ -2,6 +2,7 @@
 (() => {
   const slug = text => text.normalize('NFKD').replace(/[’']/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   const workSlug = work => slug(work.title);
+  const legacyWorkSlugs = {'collected-charms':'charms','pearls-talismans':'pearls','a-little-garden':'garden'};
   const storySlug = index => slug(stories[index].title);
   const paperSlug = index => slug(academicTitle(academicPapers[index]));
   const writingTabId = subsection => subsection==='academic'?'#academic-tab':subsection==='stories'?'#stories-tab':'#poetry-tab';
@@ -32,7 +33,7 @@
       if(section==='poetry')section='writing';
       if(section==='jewelry')section='work';
       if(section==='art') {
-        const work=works.find(item=>workSlug(item)===parts[1]||item.id===parts[1]);
+        const work=works.find(item=>workSlug(item)===parts[1]||item.id===parts[1]||item.id===legacyWorkSlugs[parts[1]]);
         if(!work){write('work',{replace:true});return applyFallback('work',focus);}
         const dialog=document.querySelector('#art-dialog');closeOtherDialogs(dialog);
         navigateMedium('work',{focus,updateHistory:false,fromRouter:true});openArt(work);title(displayTitle(work.title));return;
