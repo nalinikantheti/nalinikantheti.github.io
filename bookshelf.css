@@ -1,0 +1,20 @@
+/* A quiet home-page discovery, outside the main navigation. */
+.bookshelf-nook{margin-top:20px;display:flex;align-items:center;position:relative;z-index:1}
+.bookshelf-door{display:grid;place-items:center;width:82px;min-height:70px;padding:4px;border:0;background:transparent;color:#8b7047;opacity:.62;cursor:pointer;transition:opacity .25s,transform .25s}
+.bookshelf-door svg{display:block;width:72px;height:60px;filter:drop-shadow(0 1px 2px #fff8e4aa)}
+.bookshelf-door:hover{opacity:1;transform:translateY(-3px) rotate(-3deg)}
+.bookshelf-door:focus-visible{opacity:1;outline:2px solid #a45b46;outline-offset:4px;border-radius:18px}
+.bookshelf-section{padding-top:50px}.bookshelf-heading{text-align:center;margin:0 auto 42px}
+.bookshelf-lotus{display:block;width:39px;height:39px;margin:0 auto 15px;color:#a45b46;fill:none;stroke:currentColor}
+.bookshelf-heading .eyebrow{color:#8b7047}.bookshelf-heading h2{margin:15px 0 0}
+.favorite-books{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0}
+.favorite-book{display:flex;flex-direction:column;min-width:0;min-height:205px;padding:30px 32px;background:transparent url('assets/frames/card-chamfer.svg') center/100% 100% no-repeat}
+.book-number{font:10px/1.5 var(--font-ui);letter-spacing:2px;color:#a45b46;margin-bottom:16px}
+.favorite-book h3{font:28px/1.18 var(--font-display);color:#35422b;margin:0 0 17px;overflow-wrap:anywhere;text-wrap:balance}
+.book-author{font:italic 19px/1.45 var(--font-display);color:#65704f;margin:auto 0 0;overflow-wrap:anywhere}
+.bookshelf-return{display:flex;justify-content:center;margin-top:40px}
+@media(max-width:1000px){.favorite-books{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.bookshelf-nook{margin-top:16px}.bookshelf-door{width:72px;min-height:62px}.bookshelf-door svg{width:64px;height:54px}.bookshelf-section{padding-top:35px}.favorite-books{grid-template-columns:1fr;gap:19px}.favorite-book{padding:29px 31px;min-height:180px}.favorite-book h3{font-size:28px}.bookshelf-heading{margin-bottom:30px}}
+@media(prefers-reduced-motion:reduce){.bookshelf-door{transition:none}.bookshelf-door:hover{transform:none}}
+
+.miniature .bookshelf-goodreads{margin-top:25px;min-width:0;max-width:100%;gap:14px;padding:18px 25px;letter-spacing:.7px;text-align:center}

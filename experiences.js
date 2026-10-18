@@ -1,5 +1,5 @@
 const experiencePanels = [...document.querySelectorAll('.experience-panel')];
-const mediumLabels = {home:'Home',work:'Visual Art',writing:'Writing',henna:'Henna',music:'Music',contact:'Contact'};
+const mediumLabels = {home:'Home',work:'Visual Art',writing:'Writing',henna:'Henna',music:'Music',contact:'Contact',bookshelf:'Favorite Books'};
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let currentRoute = 'home';
 function navigateMedium(route, {focus = true, updateHistory = true, fromRouter = false} = {}) {
@@ -9,7 +9,7 @@ function navigateMedium(route, {focus = true, updateHistory = true, fromRouter =
   if (!Object.hasOwn(mediumLabels, route)) route = 'home';
   const panel = document.querySelector(route === 'home' ? '#home' : `#panel-${route}`);
   experiencePanels.forEach(item => item.hidden = item !== panel);
-  document.querySelectorAll('.experience-header [data-route]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.route === route)));
+  document.querySelectorAll('.experience-header [data-route]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.route === (route==='bookshelf'?'home':route))));
   if (route === 'work') {
     const filter = 'All';
     document.querySelector(`[data-filter="${filter}"]`).click();
