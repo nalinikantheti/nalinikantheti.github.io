@@ -93,7 +93,7 @@ document.querySelector('#inquiry-form').addEventListener('submit', async event =
 document.querySelector('#year').textContent = new Date().getFullYear();
 renderGallery();
 
-// Drive-hosted henna photographs retain a direct link if embedding is unavailable.
+// Locally hosted henna photographs open with their design and event descriptions.
 document.querySelectorAll('.henna-photo').forEach(button => {
   const img = button.querySelector('img');
   function markUnavailable() {
@@ -107,7 +107,7 @@ document.querySelectorAll('.henna-photo').forEach(button => {
     image: button.dataset.hennaImage,
     title: button.dataset.hennaTitle,
     medium: 'Henna / Kantheti Designs',
-    description: ''
+    description: button.dataset.hennaDescription || ''
   }));
 });
 document.querySelector('#henna-booking').addEventListener('click', () => {

@@ -60,7 +60,7 @@
       }
       if(section==='henna'&&parts[1]==='photo') {
         const photo=document.querySelectorAll('.henna-photo')[Number(parts[2])-1];
-        if(photo){closeOtherDialogs(document.querySelector('#art-dialog'));navigateMedium('henna',{focus,updateHistory:false,fromRouter:true});openArt({image:photo.dataset.hennaImage,title:photo.dataset.hennaTitle,medium:'Henna / Kantheti Designs',description:''});title(photo.dataset.hennaTitle);return;}
+        if(photo){closeOtherDialogs(document.querySelector('#art-dialog'));navigateMedium('henna',{focus,updateHistory:false,fromRouter:true});openArt({image:photo.dataset.hennaImage,title:photo.dataset.hennaTitle,medium:'Henna / Kantheti Designs',description:photo.dataset.hennaDescription||''});title(photo.dataset.hennaTitle);return;}
       }
       const route=Object.hasOwn(mediumLabels,section)?section:'home';
       applyFallback(route,focus,parts[1]);
