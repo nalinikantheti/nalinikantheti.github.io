@@ -11,10 +11,15 @@
 .miniature .featured-art{border:0;outline:0;padding:17px;background:transparent url('assets/frames/card-chamfer.svg') center/100% 100% no-repeat!important}
 .miniature footer .social-grid>a{border:0;outline:0;padding:23px 25px;background:transparent url('assets/frames/card-dark.svg') center/100% 100% no-repeat}
 .miniature footer .social-grid>a:hover{background-color:transparent;filter:brightness(1.08)}
-.miniature .video-frame{border:0;outline:0;padding:14px;background:transparent url('assets/frames/card-chamfer.svg') center/100% 100% no-repeat}
 .miniature :is(.paper-card,.story-card,.button,.filters button,.art-photo-views button,.featured-art):focus-visible{outline:2px solid #a45b46;outline-offset:4px}
-@media(max-width:700px){.miniature :is(.paper-card,.story-card){padding:33px 27px}.miniature .art-frame{padding:17px}.miniature .button,.miniature #inquiry-form .button{padding:17px 22px}.miniature .filters{gap:8px}.miniature .filters button{padding:12px 18px;min-height:46px}.miniature .video-frame{padding:11px}}
+@media(max-width:700px){.miniature :is(.paper-card,.story-card){padding:33px 27px}.miniature .art-frame{padding:17px}.miniature .button,.miniature #inquiry-form .button{padding:17px 22px}.miniature .filters{gap:8px}.miniature .filters button{padding:12px 18px;min-height:46px}}
 
 .miniature #inquiry-form{border:0;outline:0;background:transparent url('assets/frames/card-chamfer.svg') center/100% 100% no-repeat;padding:34px}
 .miniature .contact-portrait,.miniature .hero-portrait,.miniature #poem-artwork{border:0;outline:0;background:transparent url('assets/frames/card-chamfer.svg') center/100% 100% no-repeat;padding:17px}
 @media(max-width:700px){.miniature #inquiry-form{padding:27px 22px}}
+
+/* Henna shares the exhibition frames; music keeps its clean rectangular players. */
+.miniature .henna-photo{border:0;outline:0;padding:21px;background:transparent url('assets/frames/card-chamfer.svg') center/100% 100% no-repeat}
+.miniature .henna-card:nth-child(even) .henna-photo{background-image:url('assets/frames/card-scallop.svg')}
+.miniature .henna-photo:focus-visible{outline:2px solid #a45b46;outline-offset:4px}
+@media(max-width:700px){.miniature .henna-photo{padding:15px}}
