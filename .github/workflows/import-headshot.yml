@@ -1,0 +1,74 @@
+name: Import artist headshot
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/import-headshot.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download and validate the supplied photograph
+        shell: python
+        run: |
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+          import re
+          file_id = '1uk1ZD6c2KUwO6Y40xAdqJGDTXaeKvqkC'
+          urls = [
+              f'https://drive.google.com/uc?export=download&id={file_id}',
+              f'https://lh3.googleusercontent.com/d/{file_id}=w1800',
+              f'https://drive.google.com/thumbnail?id={file_id}&sz=w1800',
+          ]
+          errors = []
+          for url in urls:
+              try:
+                  with urlopen(Request(url, headers={'User-Agent': 'Mozilla/5.0'}), timeout=45) as response:
+                      photo = response.read(20 * 1024 * 1024)
+                  if len(photo) < 1000:
+                      raise ValueError('Image response is too small')
+                  if photo.startswith(b'\xff\xd8\xff'):
+                      extension = 'jpg'
+                  elif photo.startswith(b'\x89PNG\r\n\x1a\n'):
+                      extension = 'png'
+                  elif photo.startswith(b'RIFF') and photo[8:12] == b'WEBP':
+                      extension = 'webp'
+                  else:
+                      raise ValueError('Google did not return an image. Check public Viewer sharing.')
+                  image_path = Path(f'assets/nalini-headshot.{extension}')
+                  image_path.write_bytes(photo)
+                  page = Path('index.html')
+                  html = page.read_text()
+                  html, count = re.subn(
+                      r'(<figure id="contact-headshot"[^>]*><img )src="[^"]+"',
+                      lambda match: match[1] + f'src="{image_path.as_posix()}"', html)
+                  if count != 1:
+                      raise ValueError('Contact portrait slot not found')
+                  html = html.replace('loading="lazy" referrerpolicy="no-referrer"></figure>', 'loading="eager"></figure>', 1)
+                  page.write_text(html)
+                  print(f'Imported validated {extension} image ({len(photo)} bytes) to {image_path}')
+                  break
+              except Exception as error:
+                  errors.append(str(error))
+          else:
+              raise RuntimeError('Unable to import headshot: ' + '; '.join(errors))
+      - name: Commit the locally hosted photograph
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/nalini-headshot.* index.html
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Host artist headshot locally on the portfolio"
+          git push
+      - name: Request Pages rebuild
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.request('POST /repos/{owner}/{repo}/pages/builds', {
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
