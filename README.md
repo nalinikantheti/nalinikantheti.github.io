@@ -41,3 +41,5 @@ The six category cards now use a coordinated generated fine-line editorial illus
 Category covers use delicate outlined symbols on ivory: lotus, notebook, floral henna rosette, pendant, record, and flowering branch. They are representative navigation illustrations, not photographs or examples of Nalini’s work.
 
 The category cards use cusped arch frames in a three-column layout (two columns on smaller tablets, one on phones). Their representative imagery uses fine olive and gold outlines with minimal terracotta accents.
+
+Jewelry has no separate navigation entry or homepage card; its work is available through the Jewelry filter in Visual Art. Contact includes a clearly labeled lorem ipsum Artist Statement placeholder. The supplied chat headshot was not available as a filesystem attachment; a hidden portrait slot is prepared but no substitute image is published. Add the supplied original to that slot when an accessible file or link is provided.

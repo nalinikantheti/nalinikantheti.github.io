@@ -1,14 +1,15 @@
 const experiencePanels = [...document.querySelectorAll('.experience-panel')];
-const mediumLabels = {home:'Home',work:'Visual Art',jewelry:'Jewelry',poetry:'Poetry',henna:'Henna',music:'Music',contact:'Contact'};
+const mediumLabels = {home:'Home',work:'Visual Art',poetry:'Poetry',henna:'Henna',music:'Music',contact:'Contact'};
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let currentRoute = 'home';
 function navigateMedium(route, {focus = true, updateHistory = true} = {}) {
+  if (route === 'jewelry') route = 'work';
   if (!Object.hasOwn(mediumLabels, route)) route = 'home';
-  const panel = document.querySelector(route === 'home' ? '#home' : `#panel-${route === 'jewelry' ? 'work' : route}`);
+  const panel = document.querySelector(route === 'home' ? '#home' : `#panel-${route}`);
   experiencePanels.forEach(item => item.hidden = item !== panel);
   document.querySelectorAll('.experience-header [data-route]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.route === route)));
-  if (route === 'work' || route === 'jewelry') {
-    const filter = route === 'jewelry' ? 'Jewelry' : 'All';
+  if (route === 'work') {
+    const filter = 'All';
     document.querySelector(`[data-filter="${filter}"]`).click();
     panel.querySelector('.panel-toolbar>span').textContent = mediumLabels[route];
   }
