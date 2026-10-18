@@ -1,0 +1,62 @@
+[
+  {
+    "name": "cardigan-01",
+    "status": "ready",
+    "original_size": [
+      656,
+      394
+    ],
+    "size": [
+      656,
+      394
+    ]
+  },
+  {
+    "name": "cardigan-02",
+    "status": "ready",
+    "original_size": [
+      694,
+      832
+    ],
+    "size": [
+      694,
+      832
+    ]
+  },
+  {
+    "name": "cardigan-03",
+    "status": "ready",
+    "original_size": [
+      640,
+      512
+    ],
+    "size": [
+      640,
+      512
+    ]
+  },
+  {
+    "name": "waist-beads",
+    "status": "ready",
+    "original_size": [
+      712,
+      704
+    ],
+    "size": [
+      712,
+      704
+    ]
+  },
+  {
+    "name": "hero-self-portrait",
+    "status": "ready",
+    "original_size": [
+      704,
+      986
+    ],
+    "size": [
+      704,
+      986
+    ]
+  }
+]
