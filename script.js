@@ -19,7 +19,9 @@ function renderGallery(filter = 'All') {
     const medium = document.createElement('span'); medium.textContent = work.medium === 'Digital' ? 'Digital illustration' : work.medium;
     const number = document.createElement('span'); number.textContent = String(works.indexOf(work) + 1).padStart(2, '0'); meta.append(medium, number);
     const title = document.createElement('h3'); title.textContent = displayTitle(work.title);
-    button.append(frame, meta, title); button.addEventListener('click', () => openArt(work)); return button;
+    button.append(frame, meta, title);
+    if(work.patternCredit){const credit=document.createElement('span');credit.className='art-card-credit';credit.textContent=`Pattern: ${work.patternCredit}`;button.append(credit);}
+    button.addEventListener('click', () => openArt(work)); return button;
   }));
   document.querySelector('#gallery-status').textContent = `${selection.length} works shown`;
 }
@@ -41,6 +43,7 @@ function openArt(work) {
   document.querySelector('#art-title').textContent = displayTitle(work.title);
   document.querySelector('#art-medium').textContent = work.medium;
   document.querySelector('#art-description').textContent = work.description;
+  const credit=document.querySelector('#art-credit');credit.hidden=!work.patternCredit;credit.textContent=work.patternCredit?`Pattern: ${work.patternCredit}`:'';
   const dialog = document.querySelector('#art-dialog'); dialog.setAttribute('aria-labelledby', 'art-title'); showDialog(dialog);
   window.siteRouter?.artOpened(work);
 }
@@ -84,7 +87,7 @@ document.querySelector('#inquiry-form').addEventListener('submit', async event =
   } catch {
     status.textContent = 'Your inquiry could not be submitted. Your details are still here. Please try again or email kanthetidesigns@gmail.com directly.';
   } finally {
-    button.disabled = false; button.textContent = 'Send inquiry ↗';
+    button.disabled = false; button.textContent = 'Send Inquiry ↗';
   }
 });
 document.querySelector('#year').textContent = new Date().getFullYear();

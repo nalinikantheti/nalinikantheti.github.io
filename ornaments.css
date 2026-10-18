@@ -1,0 +1,20 @@
+/* A restrained family of double-line cartouches, scallops, and clipped corners. */
+.miniature .filters button,.miniature .art-photo-views button,.miniature .academic-control-actions button:not(#paper-close),.miniature #story-expand,.miniature #story-restart,.miniature .story-reader-bottom button,.miniature .paper-reader-bottom button,.miniature .video-retry button{border:0;border-radius:0;box-shadow:none;min-height:48px;padding:13px 23px;background:transparent url('assets/frames/button-cream.svg') center/100% 100% no-repeat;color:#59603e}
+.miniature .filters button[data-filter].active,.miniature .art-photo-views button[aria-pressed=true]{background:transparent url('assets/frames/button-green.svg') center/100% 100% no-repeat;color:#f6eddb}
+.miniature .button,.miniature #inquiry-form .button{border:0;outline:0;box-shadow:none;background:transparent url('assets/frames/button-rose.svg') center/100% 100% no-repeat;padding:18px 27px;min-height:58px;color:#fff3df;border-radius:0}
+.miniature .button:hover,.miniature #inquiry-form .button:hover{background:transparent url('assets/frames/button-rose.svg') center/100% 100% no-repeat;filter:brightness(.96)}
+.miniature :is(.paper-card,.story-card){border:0;outline:0;padding:37px 34px;background:transparent url('assets/frames/card-chamfer.svg') center/100% 100% no-repeat}
+.miniature .story-card{background-image:url('assets/frames/card-scallop.svg');padding:42px 35px}
+.miniature :is(.paper-card,.story-card):hover{background-color:transparent;filter:drop-shadow(0 5px 6px #5b4c2515)}
+.miniature .art-frame{border:0;outline:0;padding:23px;background:transparent url('assets/frames/card-chamfer.svg') center/100% 100% no-repeat!important}
+.miniature .art-card:nth-child(even) .art-frame{background-image:url('assets/frames/card-scallop.svg')!important}
+.miniature .featured-art{border:0;outline:0;padding:17px;background:transparent url('assets/frames/card-chamfer.svg') center/100% 100% no-repeat!important}
+.miniature footer .social-grid>a{border:0;outline:0;padding:23px 25px;background:transparent url('assets/frames/card-dark.svg') center/100% 100% no-repeat}
+.miniature footer .social-grid>a:hover{background-color:transparent;filter:brightness(1.08)}
+.miniature .video-frame{border:0;outline:0;padding:14px;background:transparent url('assets/frames/card-chamfer.svg') center/100% 100% no-repeat}
+.miniature :is(.paper-card,.story-card,.button,.filters button,.art-photo-views button,.featured-art):focus-visible{outline:2px solid #a45b46;outline-offset:4px}
+@media(max-width:700px){.miniature :is(.paper-card,.story-card){padding:33px 27px}.miniature .art-frame{padding:17px}.miniature .button,.miniature #inquiry-form .button{padding:17px 22px}.miniature .filters{gap:8px}.miniature .filters button{padding:12px 18px;min-height:46px}.miniature .video-frame{padding:11px}}
+
+.miniature #inquiry-form{border:0;outline:0;background:transparent url('assets/frames/card-chamfer.svg') center/100% 100% no-repeat;padding:34px}
+.miniature .contact-portrait,.miniature .hero-portrait,.miniature #poem-artwork{border:0;outline:0;background:transparent url('assets/frames/card-chamfer.svg') center/100% 100% no-repeat;padding:17px}
+@media(max-width:700px){.miniature #inquiry-form{padding:27px 22px}}

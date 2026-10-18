@@ -1,0 +1,12 @@
+/* Serif exhibition copy; one consistent sans-serif for controls and small labels. */
+:root{--font-display:'Cormorant Garamond',Georgia,serif;--font-ui:'DM Sans',sans-serif}
+body.experience{font-family:var(--font-ui)}
+h1,h2,h3,h4,h5,h6{font-family:var(--font-display)}
+button,input,select,textarea{font-family:var(--font-ui)}
+#art-description{font:20px/1.65 var(--font-display);margin-bottom:14px}
+#art-credit,.art-card-credit{font:italic 18px/1.5 var(--font-display);color:#65704f}
+.art-card-credit{display:block;margin:9px 0 0;text-align:left;font-size:16px}
+#art-credit[hidden]{display:none}
+.miniature .film-credits{font-family:var(--font-ui)}
+.miniature .hero-portrait figcaption,.miniature #poem-artwork figcaption{font:italic 17px/1.5 var(--font-display)}
+.poem-body,.opening-poem,.academic-prose,#story-reader-body{font-family:var(--font-display)}
