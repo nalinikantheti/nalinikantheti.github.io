@@ -4,6 +4,9 @@ on:
     branches: [main]
     paths: ['.github/workflows/import-videos.yml']
   workflow_dispatch:
+concurrency:
+  group: portfolio-native-video-import
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:
@@ -37,7 +40,7 @@ jobs:
               subprocess.run(['gdown', f'https://drive.google.com/uc?id={drive_id}', '-O', str(original)], check=True)
               subprocess.run(['ffprobe', '-v', 'error', str(original)], check=True)
               output = media / f'{slug}.mp4'
-              subprocess.run(['ffmpeg', '-y', '-i', str(original), '-map', '0:v:0', '-map', '0:a:0?', '-vf', "scale=w='min(720,iw)':h=-2,fps=30", '-c:v', 'libx264', '-preset', 'fast', '-crf', '28', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', str(output)], check=True)
+              subprocess.run(['ffmpeg', '-y', '-i', str(original), '-map', '0:v:0', '-map', '0:a:0?', '-vf', "scale=w='min(720,iw)':h=-2,fps=30", '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '28', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', str(output)], check=True)
               if output.stat().st_size > 90 * 1024 * 1024:
                   raise ValueError(f'{slug} exceeds the repository media budget; needs dedicated hosting')
               poster = media / f'{slug}.jpg'
@@ -61,4 +64,5 @@ jobs:
           git add assets/media index.html
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Host mobile-ready native videos with inline playback controls"
+          git pull --rebase origin main
           git push

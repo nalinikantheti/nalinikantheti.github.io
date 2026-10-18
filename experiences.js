@@ -14,6 +14,7 @@ function navigateMedium(route, {focus = true, updateHistory = true} = {}) {
     document.querySelector(`[data-filter="${filter}"]`).click();
     panel.querySelector('.panel-toolbar>span').textContent = mediumLabels[route];
   }
+  if (route !== 'music') document.querySelectorAll('.video-frame video').forEach(video => video.pause());
   currentRoute = route;
   if (updateHistory && location.hash !== `#${route}`) history.pushState({route}, '', `#${route}`);
   document.title = `${mediumLabels[route]} — Nalini Kantheti`;

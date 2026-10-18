@@ -4,6 +4,9 @@ on:
     branches: [main]
     paths: ['.github/workflows/check-media-import.yml']
   workflow_dispatch:
+  workflow_run:
+    workflows: [Prepare native portfolio videos]
+    types: [completed]
 permissions:
   actions: read
   contents: write
