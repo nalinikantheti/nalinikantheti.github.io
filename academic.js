@@ -113,7 +113,6 @@ academicReader.addEventListener('scroll',()=>{if(!academicReader.open||paperRest
 document.querySelector('#paper-close').addEventListener('click',()=>{if(!paperRestore)savePaperPlace();academicReader.close();});
 academicReader.addEventListener('cancel',()=>{if(!paperRestore)savePaperPlace();});
 academicReader.addEventListener('close',()=>{if(!paperRestore)savePaperPlace({ratio:lastPaperRatio});clearTimeout(paperSaveTimer);paperVersion++;academicReader.classList.remove('paper-expanded');document.querySelector('#paper-expand').setAttribute('aria-pressed','false');document.querySelector('#paper-expand').textContent='Full Screen';document.body.classList.remove('modal-open');});
-document.querySelector('#paper-restart').addEventListener('click',()=>{paperFinished=false;academicReader.scrollTop=0;setPaperProgress(0);savePaperPlace({ratio:0,finished:false});});
 document.querySelector('#paper-finish').addEventListener('click',()=>{paperFinished=true;savePaperPlace({ratio:1,finished:true});academicReader.close();});
 document.querySelector('#paper-expand').addEventListener('click',()=>{
   const ratio=paperRatio();paperRestore=true;
