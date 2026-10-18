@@ -15,6 +15,6 @@ From this directory, run `python3 -m http.server 8000 --bind 127.0.0.1`.
 
 The inquiry form validates required fields and opens a prepared email to kanthetidesigns@gmail.com. The visitor must send it from their email application. A download button provides the same inquiry as a text file. No submission backend or automatic booking confirmation is configured, and form data is not stored by the site.
 
-Fonts are loaded from Google Fonts with local serif and sans-serif fallbacks. Artwork is hosted locally. The original `more-about-henna.html` page remains available at its existing path.
+Fonts are loaded from Google Fonts with local serif and sans-serif fallbacks. Artwork is hosted locally.
 
 Before publishing, review artwork titles (carried over from the reference PDF), biographical copy, poems, and the contact address. Deployment follows this repository's GitHub Pages settings; local edits do not publish automatically until committed and deployed.
