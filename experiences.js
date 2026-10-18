@@ -14,7 +14,7 @@ function navigateMedium(route, {focus = true, updateHistory = true} = {}) {
   }
   currentRoute = route;
   if (updateHistory && location.hash !== `#${route}`) history.pushState({route}, '', `#${route}`);
-  document.title = `${mediumLabels[route]} — Nalini Kantheti / ${document.body.classList.contains('night') ? 'After Dark' : 'Garden'}`;
+  document.title = `${mediumLabels[route]} — Nalini Kantheti`;
   if (!reducedMotion.matches) panel.animate([{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'translateY(0)'}],{duration:480,easing:'cubic-bezier(.2,.7,.2,1)'});
   if (focus) {
     window.scrollTo({top:0,behavior:'instant'});

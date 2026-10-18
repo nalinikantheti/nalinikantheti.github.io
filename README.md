@@ -24,14 +24,8 @@ Before publishing, review artwork titles (carried over from the reference PDF), 
 
 The Henna section contains four artist-supplied Google Drive photographs, served using Google’s image URLs without visible Drive links. Each source file must allow “Anyone with the link — Viewer.” The workspace proxy blocks Google-hosted images, so live image loading has not been verified here. Images can be downloaded into `assets/` later for independent hosting when the originals become accessible.
 
-## Portfolio design versions
+## Portfolio layout
 
-The version navigation at the top links three independently browsable pages:
+`index.html` is the selected interactive layout, using cream (#f1e7da), plum (#54303e), rose (#94505e), clay (#be907e), and antique gold (#bda174). The alternate design pages and version tabs have been removed.
 
-- `index.html`: original design, with About removed.
-- `garden.html`: cream botanical composition with interactive medium navigation.
-- `night.html`: deep-green composition with a visitor-controlled featured-art viewer.
-
-The new versions share `experiences.css` and `experiences.js`, plus the original gallery, poem, and form behavior. Content panels switch in place, support URL hashes and browser Back/Forward, and retain each form’s entered data while switching mediums. Motion respects `prefers-reduced-motion`; artwork tilt is enabled only for fine pointers. Navigation, dialogs, gallery filtering, booking selection, mobile layouts, and simulated form submissions were checked locally. External Drive playback and image delivery remain dependent on public file sharing and are not established by those simulated checks.
-
-Artwork entries and poems are shared through `portfolio-data.js`. Section markup is currently duplicated across the three HTML pages; future section-copy or video changes should be applied to all three versions. No changes to the existing email service are required.
+`experiences.css` and `experiences.js` provide the medium navigation, featured-art viewer, botanical motion, direct hash links, and browser Back/Forward support. Motion respects `prefers-reduced-motion`; artwork tilt is enabled only for fine pointers. Gallery, poetry, booking and form behavior remain in `script.js`, with artwork entries and poems in `portfolio-data.js`.
