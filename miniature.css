@@ -29,3 +29,6 @@ body.experience.miniature{--paper:#f3e8d3;--ink:#35422b;--wine:#a45b46;--gold:#b
 @media(min-width:1001px){.photographic-covers .medium-portals{grid-template-columns:repeat(6,minmax(0,1fr))}.photographic-covers .medium-portal{grid-column:span 2}.photographic-covers .portal-music{grid-column:2/span 2}.photographic-covers .portal-contact{grid-column:4/span 2}}
 
 .contact-portrait img{aspect-ratio:4/5;object-fit:cover;object-position:46% 35%}.contact-portrait{align-self:start}
+/* The featured music video is portrait footage. */
+.miniature .featured-film{grid-template-columns:1fr minmax(0,360px);justify-content:center;gap:45px}.miniature .featured-film>.video-frame{max-width:360px;width:100%;justify-self:center}.miniature .featured-film>.video-frame iframe{aspect-ratio:9/16;width:100%;height:auto}
+@media(max-width:700px){.miniature .featured-film{grid-template-columns:1fr;gap:25px}.miniature .featured-film>.video-frame{max-width:330px}}
