@@ -106,3 +106,13 @@ reader.querySelector('.story-close').addEventListener('click',()=>reader.close()
 reader.addEventListener('close',()=>document.body.classList.remove('modal-open'));
 document.querySelector('#previous-story').addEventListener('click',()=>{if(currentStory>0)renderStory(currentStory-1);});
 document.querySelector('#next-story').addEventListener('click',()=>{if(currentStory<stories.length-1)renderStory(currentStory+1);});
+
+const storyExpand = document.querySelector('#story-expand');
+function setExpandedReading(expanded) {
+  reader.classList.toggle('story-expanded', expanded);
+  storyExpand.setAttribute('aria-pressed', String(expanded));
+  storyExpand.setAttribute('aria-label', expanded ? 'Return to compact story reader' : 'Expand story to full screen');
+  storyExpand.querySelector('span').textContent = expanded ? 'Exit Full Screen' : 'Full Screen';
+}
+storyExpand.addEventListener('click', () => setExpandedReading(!reader.classList.contains('story-expanded')));
+reader.addEventListener('close', () => setExpandedReading(false));
