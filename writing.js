@@ -1,3 +1,44 @@
+const storyDetails = {
+  "story-one": {
+    "genres": [
+      "Romance",
+      "Comedy"
+    ],
+    "blurb": "A reluctant beauty-pageant contestant reunites with her former best friend, bringing years of history back into the spotlight. Between brutal rehearsals, old grudges, and spectacularly bad assumptions, Sareena discovers that competing for a crown may be easier than figuring out where she stands with Radhika.",
+    "headings": [
+      "2026: The StairMaster Incident",
+      "2016: Angel Numbers",
+      "2026: Instaspiral",
+      "2019: Roses are Red",
+      "2026: The Vulture",
+      "2020: High School Sweethearts",
+      "2026: Stand Up Straight",
+      "2020: What Goes on Behind Closed Doors",
+      "2026: And the Winner is"
+    ]
+  },
+  "story-two": {
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "blurb": "When a family cruise becomes a fight for survival, Mandy is stranded at sea with the people who know her best—and understand her least. As supplies run low and old wounds surface, the line between surviving her family and saving them begins to blur.",
+    "headings": [
+      "Last Boat",
+      "Tulips Over Tigerlilies",
+      "Teach a Man to Fish",
+      "Therapy Session",
+      "Catch and Release",
+      "Public Execution",
+      "Family Dinner",
+      "Dear Diary",
+      "Thicker Than Water",
+      "Epilogue",
+      "The Bell Was Missing"
+    ]
+  }
+};
+
 const writingTabs = [...document.querySelectorAll('.writing-tabs [role="tab"]')];
 function selectWritingTab(tab) {
   writingTabs.forEach(item => {
@@ -24,13 +65,27 @@ function renderStory(index) {
   currentStory = index;
   const story = stories[index];
   document.querySelector('#story-reader-title').textContent = story.title;
-  document.querySelector('#story-reader-meta').textContent = `${storyMinutes(story)} minute read`;
+  const details = storyDetails[story.id];
+  document.querySelector('#story-reader-meta').textContent = `${details.genres.join(' · ')} / ${storyMinutes(story)} minute read`;
+  document.querySelector('#story-reader-blurb').textContent = details.blurb;
   const text = story.text.replace(/\r\n/g,'\n');
   // Omit a duplicate title line only when the document starts with its exact title.
   const body = text.startsWith(story.title+'\n') ? text.slice(story.title.length).trimStart() : text;
-  document.querySelector('#story-reader-body').replaceChildren(...body.split(/\n\s*\n/).map(paragraph => {
-    const p = document.createElement('p'); p.textContent = paragraph; return p;
-  }));
+  const headings = new Set(details.headings);
+  const blocks = body.split('\n').filter(line => line.trim()).map(line => {
+    const content = line.trim();
+    if (/^_{3,}$/.test(content)) {
+      const divider = document.createElement('hr'); divider.className = 'story-scene-divider'; return divider;
+    }
+    if (headings.has(content)) {
+      const heading = document.createElement('h3'); heading.className = 'story-scene-heading';
+      const bold = document.createElement('strong'); bold.textContent = content; heading.append(bold); return heading;
+    }
+    const paragraph = document.createElement('p'); paragraph.textContent = line;
+    if (content === 'Nalini Kantheti') paragraph.className = 'story-byline';
+    return paragraph;
+  });
+  document.querySelector('#story-reader-body').replaceChildren(...blocks);
   document.querySelector('#previous-story').disabled = index === 0;
   document.querySelector('#next-story').disabled = index === stories.length-1;
   reader.scrollTop = 0;
@@ -40,9 +95,12 @@ stories.forEach((story,index) => {
   const button = document.createElement('button'); button.className = 'story-card';
   const number = document.createElement('span'); number.className = 'eyebrow'; number.textContent = `SHORT STORY / ${String(index+1).padStart(2,'0')}`;
   const title = document.createElement('h3'); title.textContent = story.title;
-  const meta = document.createElement('p'); meta.textContent = `${storyMinutes(story)} minute read`;
+  const details = storyDetails[story.id];
+  const genres = document.createElement('p'); genres.className = 'story-genres'; genres.textContent = details.genres.join(' · ');
+  const blurb = document.createElement('p'); blurb.className = 'story-blurb'; blurb.textContent = details.blurb;
+  const meta = document.createElement('p'); meta.className = 'story-reading-time'; meta.textContent = `${storyMinutes(story)} minute read`;
   const action = document.createElement('span'); action.className = 'story-action'; action.textContent = 'Read Story →';
-  button.append(number,title,meta,action);button.addEventListener('click',()=>{renderStory(index);showDialog(reader);});storyCards.append(button);
+  button.append(number,title,genres,blurb,meta,action);button.addEventListener('click',()=>{renderStory(index);showDialog(reader);});storyCards.append(button);
 });
 reader.querySelector('.story-close').addEventListener('click',()=>reader.close());
 reader.addEventListener('close',()=>document.body.classList.remove('modal-open'));
