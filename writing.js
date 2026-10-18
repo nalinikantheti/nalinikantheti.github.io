@@ -99,7 +99,7 @@ function updateCardPlace(storyIndex) {
   const elements = storyCardActions.get(storyIndex); if(!elements) return;
   const saved = readPlace(storyIndex);
   elements.action.textContent = saved?.completed ? 'Read Again →' : saved ? 'Continue Reading →' : 'Read Story →';
-  elements.place.textContent = saved?.completed ? 'Finished' : saved ? `Saved: Chapter ${saved.chapter+1} of ${storyScenes[storyIndex].length}` : '';
+  elements.place.textContent = saved?.completed ? 'Finished' : saved ? `Chapter ${saved.chapter+1} of ${storyScenes[storyIndex].length}` : '';
   elements.place.hidden = !saved;
 }
 function savePlace({completed=false,ratio} = {}) {
@@ -110,7 +110,6 @@ function savePlace({completed=false,ratio} = {}) {
     localStorage.setItem(storageKey(stories[currentStory]),JSON.stringify({chapterTitle:storyScenes[currentStory][currentChapter].title,ratio:position,completed,updatedAt:Date.now()}));
     storageAvailable=true;
   } catch {storageAvailable=false;}
-  document.querySelector('#reading-save-status').textContent = storageAvailable ? 'Place saved on this device' : 'Saving is unavailable in this browser';
   updateCardPlace(currentStory);
 }
 function renderStory(storyIndex,chapterIndex=0,{ratio=0,focus=false}={}) {

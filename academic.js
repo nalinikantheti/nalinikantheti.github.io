@@ -23,7 +23,7 @@ function updatePaperCard(index) {
   const saved=readPaperPlace(index);
   card.action.textContent=saved?.finished?'Read Again →':saved?'Continue Reading →':'Read Paper →';
   card.place.hidden=!saved;
-  card.place.textContent=saved?.finished?'Finished':saved?`Saved: ${Math.round(saved.ratio*100)}% read`:'';
+  card.place.textContent=saved?.finished?'Finished':saved?`${Math.round(saved.ratio*100)}% read`:'';
 }
 function paperRatio(){const extent=academicReader.scrollHeight-academicReader.clientHeight;return extent>0?Math.min(1,Math.max(0,academicReader.scrollTop/extent)):0;}
 function setPaperProgress(ratio){lastPaperRatio=ratio;document.querySelector('#paper-progress').value=ratio*100;document.querySelector('#paper-progress-text').textContent=`${Math.round(ratio*100)}% read`;}
