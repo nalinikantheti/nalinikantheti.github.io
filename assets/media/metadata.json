@@ -1,0 +1,20 @@
+[
+  {
+    "file": "assets/media/music-video.mp4",
+    "width": 720,
+    "height": 1280,
+    "bytes": 19552535
+  },
+  {
+    "file": "assets/media/freestyle-01.mp4",
+    "width": 720,
+    "height": 1280,
+    "bytes": 8655487
+  },
+  {
+    "file": "assets/media/freestyle-02.mp4",
+    "width": 720,
+    "height": 1280,
+    "bytes": 6637085
+  }
+]
