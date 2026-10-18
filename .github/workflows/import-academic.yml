@@ -1,9 +1,6 @@
 name: Import supplied academic papers
 # Refresh after the sixth document’s public sharing was enabled.
 on:
-  push:
-    branches: [main]
-    paths: ['.github/workflows/import-academic.yml']
   workflow_dispatch:
 permissions:
   contents: write

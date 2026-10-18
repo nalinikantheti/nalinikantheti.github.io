@@ -63,3 +63,9 @@ Actual encoded files were decoded and played in Chromium touch emulation; site s
 ## Shareable URLs
 
 The site uses GitHub Pages-compatible hash routes that work on a fresh visit without server rewrites. Examples: `#art/beetlejuice`, `#writing/stories/runner-up`, `#writing/stories/tigerlily/chapter/3`, `#writing/poetry/hero`, and `#music/im-so-fucking-cool`. Individual henna photographs also have `#henna/photo/1` routes. `routes.js` handles direct navigation, browser history, viewer closing, and copy-link controls; `sharing.css` styles sharing actions. Story links open the beginning; chapter links select a scene and preserve a matching local bookmark on refresh. Existing main-section and legacy Poetry/Jewelry links continue to work. Clipboard permission failure provides a selectable URL fallback.
+
+## Academic Writing
+
+Writing now includes Poetry, Short Stories, and Academic Writing. All six supplied Google Docs are imported into `academic-data.js`; extracted figures are hosted under `assets/academic/`. `academic-details.js` holds reviewed display titles, paper types, and descriptions. `academic.js` renders a restricted rich-text fragment that preserves body text, emphasis, citations, section labels, and local figures without executing document markup. Reference links can open their cited sources, but the Google Docs source links are not shown.
+
+Each paper has a `#writing/academic/<title-slug>` URL, Copy Paper Link, full-screen mode, a scroll-based progress bar, Start Over, and Mark as Read. Reading positions are stored per paper in localStorage on the same browser/device; cross-device sync is not provided. Figures load before restoring the saved scroll position. Browser checks verified all six full texts against the imported formatted document bodies, all figures, refresh/resume, copied URLs, keyboard tabs, completion, and mobile layout. Story routing and chapter bookmarks were rechecked.

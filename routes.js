@@ -3,6 +3,8 @@
   const slug = text => text.normalize('NFKD').replace(/[’']/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   const workSlug = work => slug(work.title);
   const storySlug = index => slug(stories[index].title);
+  const paperSlug = index => slug(academicTitle(academicPapers[index]));
+  const writingTabId = subsection => subsection==='academic'?'#academic-tab':subsection==='stories'?'#stories-tab':'#poetry-tab';
   const poemSlug = index => slug(poems[index].title);
   let applying = false;
   let artPath = '';
@@ -17,6 +19,7 @@
     document.querySelectorAll('dialog[open]').forEach(dialog=>{
       if(dialog===keep)return;
       if(dialog===reader && !restoringPlace)savePlace();
+      if(dialog===academicReader && !paperRestore)savePaperPlace();
       dialog.close();
     });
   }
@@ -33,6 +36,11 @@
         if(!work){write('work',{replace:true});return applyFallback('work',focus);}
         const dialog=document.querySelector('#art-dialog');closeOtherDialogs(dialog);
         navigateMedium('work',{focus,updateHistory:false,fromRouter:true});openArt(work);title(displayTitle(work.title));return;
+      }
+      if(section==='writing'&&parts[1]==='academic'&&parts[2]) {
+        const index=academicPapers.findIndex((item,i)=>paperSlug(i)===parts[2]||item.id===parts[2]);
+        if(index<0){write('writing/academic',{replace:true});return applyFallback('writing',focus,'academic');}
+        closeOtherDialogs(academicReader);navigateMedium('writing',{focus,updateHistory:false,fromRouter:true});selectWritingTab(document.querySelector('#academic-tab'));openAcademic(index);title(academicTitle(academicPapers[index]));return;
       }
       if(section==='writing'&&parts[1]==='stories'&&parts[2]) {
         const index=stories.findIndex((item,i)=>storySlug(i)===parts[2]||item.id===parts[2]);
@@ -64,7 +72,7 @@
   }
   function applyFallback(route,focus,subsection) {
     closeOtherDialogs(null);navigateMedium(route,{focus,updateHistory:false,fromRouter:true});
-    if(route==='writing')selectWritingTab(document.querySelector(subsection==='stories'?'#stories-tab':'#poetry-tab'));
+    if(route==='writing')selectWritingTab(document.querySelector(writingTabId(subsection)));
   }
   window.siteRouter={
     navigate(path,{focus=true,replace=false}={}) {write(path,{replace});apply({focus});},
@@ -75,7 +83,8 @@
       if(!applying&&artPath){const base=known?'work':'henna';if(currentRoute!==base)navigateMedium(base,{focus:false,updateHistory:false,fromRouter:true});write(artPath);title(displayTitle(work.title));}
     },
     poemOpened(index) {poemPath=`writing/poetry/${poemSlug(index)}`;if(!applying){write(poemPath);title(displayTitle(poems[index].title));}},
-    writingTabChanged(tab) {if(!applying)write(tab.id==='stories-tab'?'writing/stories':'writing/poetry');},
+    writingTabChanged(tab) {if(!applying)write('writing/'+(tab.id==='academic-tab'?'academic':tab.id==='stories-tab'?'stories':'poetry'));},
+    paperOpened(index) {if(!applying){write(`writing/academic/${paperSlug(index)}`);title(academicTitle(academicPapers[index]));}},
     storyChanged(index,chapter) {if(!applying){write(`writing/stories/${storySlug(index)}/chapter/${chapter+1}`);title(`${stories[index].title} · Chapter ${chapter+1}`);}}
   };
   // A close action returns to the matching collection, without leaving a stale detail URL.
@@ -84,6 +93,7 @@
     const path=hash();
     if(dialog.id==='art-dialog'&&(path.startsWith('art/')||path.startsWith('henna/photo/'))){const base=path.startsWith('art/')?'work':'henna';write(base,{replace:true});title(mediumLabels[base]);}
     if(dialog.id==='poem-dialog'&&path.startsWith('writing/poetry/')){write('writing/poetry',{replace:true});title('Writing');}
+    if(dialog.id==='academic-dialog'&&path.startsWith('writing/academic/')){write('writing/academic',{replace:true});title('Academic Writing');}
     if(dialog.id==='story-dialog'&&path.startsWith('writing/stories/')){write('writing/stories',{replace:true});title('Writing');}
     document.body.classList.toggle('modal-open',Boolean(document.querySelector('dialog[open]')));
   }));
@@ -98,7 +108,7 @@
   }
   document.querySelectorAll('[data-copy]').forEach(button=>button.addEventListener('click',async()=>{
     const kind=button.dataset.copy;
-    const path=kind==='art'?artPath:kind==='poem'?poemPath:kind==='story'?`writing/stories/${storySlug(currentStory)}`:`writing/stories/${storySlug(currentStory)}/chapter/${currentChapter+1}`;
+    const path=kind==='paper'?`writing/academic/${paperSlug(currentPaper)}`:kind==='art'?artPath:kind==='poem'?poemPath:kind==='story'?`writing/stories/${storySlug(currentStory)}`:`writing/stories/${storySlug(currentStory)}/chapter/${currentChapter+1}`;
     const url=new URL(location.href);url.search='';url.hash=path;
     try {await navigator.clipboard.writeText(url.href);const label=button.textContent;button.textContent='Link Copied ✓';setTimeout(()=>button.textContent=label,1800);announce(kind==='chapter'?'Chapter link copied':'Link copied');}
     catch {

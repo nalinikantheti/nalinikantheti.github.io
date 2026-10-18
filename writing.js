@@ -54,7 +54,7 @@ writingTabs.forEach(tab => {
   tab.addEventListener('keydown', event => {
     if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) {
       event.preventDefault();
-      const next = event.key === 'Home' ? writingTabs[0] : event.key === 'End' ? writingTabs.at(-1) : writingTabs[(writingTabs.indexOf(tab)+1)%writingTabs.length];
+      const next = event.key === 'Home' ? writingTabs[0] : event.key === 'End' ? writingTabs.at(-1) : writingTabs[(writingTabs.indexOf(tab)+(event.key==='ArrowLeft'?-1:1)+writingTabs.length)%writingTabs.length];
       selectWritingTab(next); next.focus();
     }
   });
