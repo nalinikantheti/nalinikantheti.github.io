@@ -43,3 +43,5 @@ Category covers use delicate outlined symbols on ivory: lotus, notebook, floral 
 The category cards use cusped arch frames in a three-column layout (two columns on smaller tablets, one on phones). Their representative imagery uses fine olive and gold outlines with minimal terracotta accents.
 
 Jewelry has no separate navigation entry or homepage card; its work is available through the Jewelry filter in Visual Art. Contact includes a clearly labeled lorem ipsum Artist Statement placeholder. The supplied chat headshot was not available as a filesystem attachment; a hidden portrait slot is prepared but no substitute image is published. Add the supplied original to that slot when an accessible file or link is provided.
+
+The Contact portrait now uses the supplied headshot through a direct Google-hosted image source. There is no visible URL or clickable Drive link. The workspace proxy blocks downloading Google-hosted images, so the photo remains externally hosted and actual delivery cannot be verified here. Public Viewer sharing is required.
