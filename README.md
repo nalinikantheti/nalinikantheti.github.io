@@ -36,4 +36,6 @@ The current visual treatment is in `miniature.css`: warm ivory, olive, terracott
 
 Homepage card covers now use coordinated decorative lotus/paisley illustrations instead of portfolio images. The first featured artwork is Beetlejuice; all four carousel entries are digital animal illustrations. `assets/tiger-engraving.png` is a generated decorative footer ornament, not portfolio artwork.
 
-The six category cards now use a coordinated generated still-life image sheet (`assets/category-covers.png`) as decorative navigation covers; these are not the artist’s portfolio work. The Music section explicitly titles the featured video “I’m So Fucking Cool,” with the existing artist and sound-design credits retained. The paisley beside the homepage name has been removed.
+The six category cards now use a coordinated generated flat editorial illustration sheet (`assets/category-illustrations.png`) as decorative navigation covers; these are not the artist’s portfolio work. The Music section explicitly titles the featured video “I’m So Fucking Cool,” with the existing artist and sound-design credits retained. The paisley beside the homepage name has been removed.
+
+Category covers use simplified flat symbols on ivory: lotus, notebook, floral henna rosette, pendant, record, and flowering branch. They are representative navigation illustrations, not photographs or examples of Nalini’s work.
