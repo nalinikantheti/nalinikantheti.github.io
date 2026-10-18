@@ -15,7 +15,7 @@ From this directory, run `python3 -m http.server 8000 --bind 127.0.0.1`.
 
 The inquiry form posts JSON to FormSubmit and shows success or error messages on the page. It forwards inquiries to kanthetidesigns@gmail.com after the recipient completes FormSubmit’s one-time email activation. The first live submission triggers an activation email; follow its confirmation link, then submit a fresh test inquiry to verify delivery. Activation and inbox delivery have not been verified from this workspace. Visitor details are processed by FormSubmit. Failed requests retain entered details and show a direct email alternative.
 
-Freestyle videos are pending: this workspace has no access to the artist’s iCloud Drive. Add only supplied files or accessible public links.
+The Freestyle section embeds the artist-supplied Google Drive video. Set sharing to “Anyone with the link — Viewer” for public playback. Playback could not be verified in this workspace because its network proxy blocks Google Drive. Additional videos can be added when their links are supplied.
 
 Fonts are loaded from Google Fonts with local serif and sans-serif fallbacks. Artwork is hosted locally.
 
