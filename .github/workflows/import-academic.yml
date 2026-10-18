@@ -1,0 +1,70 @@
+name: Import supplied academic papers
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/import-academic.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install document converter
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y pandoc
+      - name: Import papers with formatting and figures
+        shell: python
+        run: |
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+          import html, json, re, subprocess, zipfile
+          documents = [
+            ('paper-one', '1Tqs_dqRA56JGt2Rl_yghebjWUd7S1cjmjTuYxUkMIuI'),
+            ('paper-two', '1AYomc66IgtuvccWVJfKqcx-1BKSphHUYJnU2L-HpTms'),
+            ('paper-three', '1iiGtGG5SfqFm9_WhNE7gyrOBFgkmjJFhunXUVi4gpfk'),
+            ('paper-four', '167_yCrfdfD5r1rAU09ixeICNq8c8V3FNB3ykoZNGF8k'),
+            ('paper-five', '1mtu_fDwhlM--q3VD-4RR_HlDhHuUrQOkRFdB2h6kIOc'),
+            ('paper-six', '1jeyfAS_H-bbfmUSBul5JIbe2CbZth7YseDjXZymisW0'),
+          ]
+          papers, errors = [], []
+          def read(url):
+              with urlopen(Request(url, headers={'User-Agent':'Mozilla/5.0'}), timeout=60) as response:
+                  return response.read(30 * 1024 * 1024)
+          for paper_id, doc_id in documents:
+              try:
+                  text = read(f'https://docs.google.com/document/d/{doc_id}/export?format=txt').decode('utf-8-sig').strip()
+                  if len(text) < 80 or text.lstrip().lower().startswith(('<!doctype','<html')):
+                      raise ValueError('Document text unavailable; check public Viewer sharing')
+                  title = ''
+                  try:
+                      page = read(f'https://docs.google.com/document/d/{doc_id}/edit').decode('utf-8-sig')
+                      match = re.search(r'<title>(.*?)</title>',page,re.S)
+                      if match: title = html.unescape(re.sub(r'\s*[-–]\s*Google Docs\s*$', '',match[1])).strip()
+                  except Exception:
+                      pass
+                  if not title: title = text.splitlines()[0].strip()
+                  source = Path(f'/tmp/{paper_id}.docx')
+                  source.write_bytes(read(f'https://docs.google.com/document/d/{doc_id}/export?format=docx'))
+                  with zipfile.ZipFile(source) as archive:
+                      assert 'word/document.xml' in archive.namelist(), 'Invalid document export'
+                  media = Path(f'assets/academic/{paper_id}')
+                  rich = subprocess.check_output(['pandoc',str(source),'-f','docx','-t','html5','--mathml',f'--extract-media={media}']).decode()
+                  papers.append({'id':paper_id,'sourceTitle':title,'text':text,'html':rich})
+                  print(f'Imported {paper_id}: {title} ({len(text)} characters)')
+              except Exception as error:
+                  errors.append({'id':paper_id,'error':str(error)})
+          Path('academic-data.js').write_text('const academicPapers = '+json.dumps(papers,ensure_ascii=False)+';\n')
+          Path('.github/academic-import-status.json').write_text(json.dumps({'imported':len(papers),'errors':errors},indent=2)+'\n')
+      - name: Save imported papers
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add academic-data.js .github/academic-import-status.json
+          if [ -d assets/academic ]; then git add assets/academic; fi
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Import supplied academic papers with document formatting"
+          git pull --rebase origin main
+          git push
