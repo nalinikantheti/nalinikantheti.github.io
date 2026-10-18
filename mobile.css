@@ -11,3 +11,8 @@
 @media(max-width:380px){.story-reader-toolbar>.eyebrow{display:none}.story-reader-toolbar{justify-content:flex-end}.story-expanded .story-reader-toolbar{padding-inline:12px}.miniature .film-info h3{font-size:34px}.miniature .art-hint{text-align:left}}
 @supports(padding:max(0px)){#story-dialog.story-expanded .story-reader-toolbar{padding-top:max(10px,env(safe-area-inset-top))}.story-reader-bottom{padding-bottom:max(12px,env(safe-area-inset-bottom))}}
 @media(min-width:701px) and (max-width:1024px){.miniature #inquiry-form input:not([type=hidden]),.miniature #inquiry-form select,.miniature #inquiry-form textarea{font-size:16px;min-width:0;max-width:100%}}
+
+/* Native, portrait jewelry showcases retain familiar mobile controls. */
+.art-frame{position:relative}.art-video-label{position:absolute;bottom:12px;left:12px;padding:8px 12px;background:#f6eddbed;border:1px solid #b79b62;color:#35422b;font-size:11px;border-radius:20px}
+#art-video{display:block;width:auto;max-width:100%;height:auto;max-height:65dvh;aspect-ratio:9/16;margin:15px auto 25px;object-fit:contain;background:#172019}
+#art-video[hidden],#art-image[hidden]{display:none}

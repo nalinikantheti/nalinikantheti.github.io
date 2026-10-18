@@ -11,6 +11,7 @@ function renderGallery(filter = 'All') {
     button.setAttribute('aria-label', `View ${work.title}`);
     const frame = document.createElement('span'); frame.className = 'art-frame';
     const img = document.createElement('img'); img.src = work.image; img.alt = work.title; img.loading = 'lazy'; frame.append(img);
+    if(work.video){const play=document.createElement('span');play.className='art-video-label';play.textContent='▶ Watch Showcase';frame.append(play);}
     const meta = document.createElement('span'); meta.className = 'meta';
     const medium = document.createElement('span'); medium.textContent = work.medium === 'Digital' ? 'Digital illustration' : work.medium;
     const number = document.createElement('span'); number.textContent = String(works.indexOf(work) + 1).padStart(2, '0'); meta.append(medium, number);
@@ -21,7 +22,11 @@ function renderGallery(filter = 'All') {
 }
 function showDialog(dialog) { if (!dialog.open) dialog.showModal(); document.body.classList.add('modal-open'); }
 function openArt(work) {
-  const img = document.querySelector('#art-image'); img.src = work.image; img.alt = work.title;
+  const img = document.querySelector('#art-image');
+  const video=document.querySelector('#art-video');
+  video.pause();video.removeAttribute('src');video.hidden=!work.video;img.hidden=Boolean(work.video);
+  if(work.video){video.setAttribute('aria-label',work.title+' — video showcase');video.poster=work.image;video.src=work.video;video.load();}
+  else{img.src=work.image;img.alt=work.title;}
   document.querySelector('#art-title').textContent = displayTitle(work.title);
   document.querySelector('#art-medium').textContent = work.medium;
   document.querySelector('#art-description').textContent = work.description;
@@ -89,3 +94,6 @@ document.querySelectorAll('.henna-photo').forEach(button => {
 document.querySelector('#henna-booking').addEventListener('click', () => {
   document.querySelector('#inquiry-form [name="type"]').value = 'Henna booking';
 });
+
+// Closing a jewelry showcase stops playback before returning to the gallery.
+document.querySelector('#art-dialog').addEventListener('close',()=>document.querySelector('#art-video').pause());

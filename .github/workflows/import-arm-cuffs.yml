@@ -1,9 +1,6 @@
 name: Import arm-cuff showcase
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - '.github/workflows/import-arm-cuffs.yml'
 permissions:
   contents: write
 concurrency:
