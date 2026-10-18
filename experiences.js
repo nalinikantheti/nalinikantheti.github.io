@@ -1,8 +1,9 @@
 const experiencePanels = [...document.querySelectorAll('.experience-panel')];
-const mediumLabels = {home:'Home',work:'Visual Art',poetry:'Poetry',henna:'Henna',music:'Music',contact:'Contact'};
+const mediumLabels = {home:'Home',work:'Visual Art',writing:'Writing',henna:'Henna',music:'Music',contact:'Contact'};
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let currentRoute = 'home';
 function navigateMedium(route, {focus = true, updateHistory = true} = {}) {
+  if (route === 'poetry') route = 'writing';
   if (route === 'jewelry') route = 'work';
   if (!Object.hasOwn(mediumLabels, route)) route = 'home';
   const panel = document.querySelector(route === 'home' ? '#home' : `#panel-${route}`);
@@ -24,7 +25,7 @@ function navigateMedium(route, {focus = true, updateHistory = true} = {}) {
   }
 }
 document.querySelectorAll('[data-route]').forEach(button => button.addEventListener('click', () => navigateMedium(button.dataset.route)));
-const anchorRoutes = {work:'work',words:'poetry',opening:'poetry',henna:'henna',freestyle:'music',inquire:'contact',home:'home'};
+const anchorRoutes = {work:'work',words:'writing',opening:'writing',henna:'henna',freestyle:'music',inquire:'contact',home:'home'};
 document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', event => {
   const route = anchorRoutes[link.getAttribute('href').slice(1)];
   if (route) {event.preventDefault(); navigateMedium(route);}

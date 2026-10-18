@@ -47,3 +47,7 @@ Jewelry has no separate navigation entry or homepage card; its work is available
 The Contact portrait now uses the supplied headshot through a direct Google-hosted image source. There is no visible URL or clickable Drive link. The workspace proxy blocks downloading Google-hosted images, so the photo remains externally hosted and actual delivery cannot be verified here. Public Viewer sharing is required.
 
 Headshot delivery is now fixed: `assets/nalini-headshot.jpg` is downloaded and committed locally. Contact uses that local path, with eager loading. The actual 2048×1365 image successfully decoded in a local browser, and the mobile layout passed. There is no Google dependency or Drive link for the portrait. The import workflow remains available for refreshing the source photograph.
+
+## Writing
+
+The main navigation uses Writing, with accessible Poetry and Short Stories views. Existing `#poetry` links resolve to Writing. `stories-data.js` stores the complete text of the two supplied documents, Runner Up! and Tigerlily. `writing.js` renders titles and story text with textContent, preserves paragraph breaks, and provides reading estimates plus previous/next story controls. `writing.css` styles the cards and reader. Google Docs links do not appear in the interface. The import workflow can refresh the supplied documents; imports preserve their content rather than editing the writing.

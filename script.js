@@ -37,7 +37,7 @@ document.querySelectorAll('[data-poem]').forEach(button => button.addEventListen
   const dialog = document.querySelector('#poem-dialog'); dialog.setAttribute('aria-labelledby', 'poem-title'); showDialog(dialog);
 }));
 document.querySelectorAll('dialog').forEach(dialog => {
-  dialog.querySelector('.close').addEventListener('click', () => dialog.close());
+  dialog.querySelector('.close')?.addEventListener('click', () => dialog.close());
   dialog.addEventListener('close', () => document.body.classList.remove('modal-open'));
   dialog.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });
 });
