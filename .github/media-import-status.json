@@ -1,11 +1,11 @@
 {
-  "status": "in_progress",
-  "conclusion": null,
+  "status": "completed",
+  "conclusion": "success",
   "jobs": [
     {
       "name": "prepare",
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "success",
       "steps": [
         {
           "name": "Set up job",
@@ -17,43 +17,51 @@
         },
         {
           "name": "Run actions/checkout@v4",
-          "status": "in_progress",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 2,
           "started_at": "2026-10-18T19:44:30Z",
-          "completed_at": null
+          "completed_at": "2026-10-18T19:44:31Z"
         },
         {
           "name": "Install media tools",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 3,
-          "started_at": null,
-          "completed_at": null
+          "started_at": "2026-10-18T19:44:31Z",
+          "completed_at": "2026-10-18T19:45:04Z"
         },
         {
           "name": "Download and encode the supplied videos",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 4,
-          "started_at": null,
-          "completed_at": null
+          "started_at": "2026-10-18T19:45:04Z",
+          "completed_at": "2026-10-18T19:46:36Z"
         },
         {
           "name": "Save native video assets",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 5,
-          "started_at": null,
-          "completed_at": null
+          "started_at": "2026-10-18T19:46:36Z",
+          "completed_at": "2026-10-18T19:46:41Z"
         },
         {
           "name": "Post Run actions/checkout@v4",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 10,
-          "started_at": null,
-          "completed_at": null
+          "started_at": "2026-10-18T19:46:41Z",
+          "completed_at": "2026-10-18T19:46:41Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-18T19:46:41Z",
+          "completed_at": "2026-10-18T19:46:41Z"
         }
       ]
     }
