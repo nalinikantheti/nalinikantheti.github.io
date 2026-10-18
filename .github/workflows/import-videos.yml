@@ -23,7 +23,7 @@ jobs:
           from pathlib import Path
           import json, re, subprocess
           sources = [
-            ('music-video', '14hbz2nGFzNo22Y99DSe1ESwtga3M_dz8', 'I’m So Fucking Cool — music video by Nalini Kantheti; audio by Todo Gomes'),
+            ('music-video', '14hbz2nGFzNo22Y99DSe1ESwtga3M_dz8', 'I’m So Fucking Cool — music video by Nalini Kantheti; audio design by Todo Gomes'),
             ('freestyle-01', '1bxCPIdUDrUJqZ4vJGbulC1TMSOypy9NA', 'Nalini Kantheti — freestyle session 1'),
             ('freestyle-02', '1ZQ9szRsFC4g_deLlv8d28b11jF3XlNbp', 'Nalini Kantheti — freestyle session 2'),
           ]
