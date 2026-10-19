@@ -1,9 +1,9 @@
 // One inline player keeps downloads and native controls scoped to the selected timelapse.
 const featuredTimelapses=[
-  {title:works.find(work=>work.id==='beetle').title,file:'beetlejuice',width:752,height:1080},
+  {title:works.find(work=>work.id==='beetle').title,file:'beetlejuice',width:1080,height:752,version:'upright1'},
   {title:works.find(work=>work.id==='bird').title,file:'prismatic-plumage',width:1088,height:1088},
   {title:works.find(work=>work.id==='frog').title,file:'red-eyed-reverie',width:752,height:1080},
-  {title:works.find(work=>work.id==='fish').title,file:'blub-therefore-i-am',width:752,height:1080},
+  {title:works.find(work=>work.id==='fish').title,file:'blub-therefore-i-am',width:1080,height:752,version:'upright1'},
   {title:'Tigerlily',file:'tigerlily',width:1088,height:1088}
 ];
 let featuredTimelapseIndex=0;
@@ -15,8 +15,9 @@ function selectTimelapse(index){
   featuredTimelapseIndex=(index+featuredTimelapses.length)%featuredTimelapses.length;
   const item=featuredTimelapses[featuredTimelapseIndex];
   timelapseError.hidden=true;
-  timelapseVideo.poster=`assets/timelapses/${item.file}.jpg`;
-  timelapseVideo.src=`assets/timelapses/${item.file}.mp4`;
+  const version=item.version?`?v=${item.version}`:'';
+  timelapseVideo.poster=`assets/timelapses/${item.file}.jpg${version}`;
+  timelapseVideo.src=`assets/timelapses/${item.file}.mp4${version}`;
   timelapseVideo.width=item.width;timelapseVideo.height=item.height;
   timelapseVideo.style.setProperty('--timelapse-ratio',item.width/item.height);
   timelapseVideo.setAttribute('aria-label',`${displayTitle(item.title)} — digital art timelapse`);

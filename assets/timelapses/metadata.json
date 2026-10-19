@@ -1,10 +1,11 @@
 [
   {
     "id": "beetlejuice",
-    "width": 752,
-    "height": 1080,
-    "duration": 29.766667,
-    "bytes": 9627047
+    "width": 1080,
+    "height": 752,
+    "duration": 29.8,
+    "bytes": 2350330,
+    "rotation_applied": -90
   },
   {
     "id": "prismatic-plumage",
@@ -22,10 +23,11 @@
   },
   {
     "id": "blub-therefore-i-am",
-    "width": 752,
-    "height": 1080,
-    "duration": 29.666667,
-    "bytes": 7645657
+    "width": 1080,
+    "height": 752,
+    "duration": 29.7,
+    "bytes": 1591317,
+    "rotation_applied": -90
   },
   {
     "id": "tigerlily",
