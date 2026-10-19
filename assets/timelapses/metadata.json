@@ -1,39 +1,39 @@
 [
   {
     "id": "beetlejuice",
-    "width": 1080,
-    "height": 752,
-    "duration": 29.8,
-    "bytes": 2350330,
+    "width": 720,
+    "height": 502,
+    "duration": 29.75,
+    "bytes": 493826,
     "rotation_applied": -90
   },
   {
     "id": "prismatic-plumage",
-    "width": 1088,
-    "height": 1088,
-    "duration": 29.633333,
-    "bytes": 11992964
+    "width": 720,
+    "height": 720,
+    "duration": 29.625,
+    "bytes": 928055
   },
   {
     "id": "red-eyed-reverie",
-    "width": 752,
-    "height": 1080,
-    "duration": 29.8,
-    "bytes": 9847020
+    "width": 502,
+    "height": 720,
+    "duration": 29.791667,
+    "bytes": 614890
   },
   {
     "id": "blub-therefore-i-am",
-    "width": 1080,
-    "height": 752,
-    "duration": 29.7,
-    "bytes": 1591317,
+    "width": 720,
+    "height": 502,
+    "duration": 29.666667,
+    "bytes": 329485,
     "rotation_applied": -90
   },
   {
     "id": "tigerlily",
-    "width": 1088,
-    "height": 1088,
-    "duration": 29.633333,
-    "bytes": 11799173
+    "width": 720,
+    "height": 720,
+    "duration": 29.625,
+    "bytes": 797080
   }
 ]
