@@ -1,5 +1,5 @@
 const experiencePanels = [...document.querySelectorAll('.experience-panel')];
-const mediumLabels = {home:'Home',work:'Visual Art',writing:'Writing',henna:'Henna',music:'Music',contact:'Contact',bookshelf:'Favorite Books'};
+const mediumLabels = {home:'Home',work:'Visual Art',writing:'Writing',henna:'Henna',music:'Music',contact:'Contact',bookshelf:'Favorite Books',resume:'Academic Résumé'};
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let currentRoute = 'home';
 function navigateMedium(route, {focus = true, updateHistory = true, fromRouter = false} = {}) {
@@ -9,7 +9,7 @@ function navigateMedium(route, {focus = true, updateHistory = true, fromRouter =
   if (!Object.hasOwn(mediumLabels, route)) route = 'home';
   const panel = document.querySelector(route === 'home' ? '#home' : `#panel-${route}`);
   experiencePanels.forEach(item => item.hidden = item !== panel);
-  document.querySelectorAll('.experience-header [data-route]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.route === (route==='bookshelf'?'home':route))));
+  document.querySelectorAll('.experience-header [data-route]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.route === (route==='bookshelf'?'home':route==='resume'?'contact':route))));
   if (route === 'work') {
     const filter = 'All';
     document.querySelector(`[data-filter="${filter}"]`).click();
@@ -28,7 +28,7 @@ function navigateMedium(route, {focus = true, updateHistory = true, fromRouter =
   }
 }
 document.querySelectorAll('[data-route]').forEach(button => button.addEventListener('click', () => navigateMedium(button.dataset.route)));
-const anchorRoutes = {work:'work',words:'writing',opening:'writing',henna:'henna',freestyle:'music',inquire:'contact',home:'home'};
+const anchorRoutes = {work:'work',words:'writing',opening:'writing',henna:'henna',freestyle:'music',inquire:'contact',home:'home',resume:'resume'};
 document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', event => {
   const route = anchorRoutes[link.getAttribute('href').slice(1)];
   if (route) {event.preventDefault(); navigateMedium(route);}
