@@ -1,13 +1,15 @@
-/* Professional destinations contrast with the dark Instagram collection cards. */
+/* Matching colors, distinct wide ornamental frames for professional destinations. */
 .footer-professional{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;width:100%;padding-top:24px;border-top:1px solid #b79b6266}
-.footer-professional-link{display:flex;align-items:center;gap:17px;min-width:0;min-height:115px;padding:24px 36px;background:transparent url('assets/frames/button-cream.svg') center/100% 100% no-repeat;color:#35422b;transition:filter .2s}
+.footer-professional-link{display:flex;align-items:center;gap:17px;min-width:0;min-height:76px;padding:15px 36px;background:transparent url('assets/frames/button-green.svg') center/100% 100% no-repeat;color:#f3e8d3;transition:filter .2s}
 .footer-professional-link:hover{filter:brightness(.96)}
-.footer-professional-link>svg{flex:0 0 30px;width:30px;height:34px;color:#a45b46}
-.footer-professional-copy{display:flex;flex-direction:column;gap:4px;min-width:0;overflow-wrap:anywhere}
-.footer-professional-kind{font:8px/1.5 var(--font-ui);letter-spacing:1.3px;color:#766d4b}
-.footer-professional-title{font:28px/1.12 var(--font-display);color:#35422b}
-.footer-professional-note{font:italic 17px/1.4 var(--font-display);color:#65704f}
-.footer-professional-arrow{margin-left:auto;flex-shrink:0;font:24px/1 var(--font-display);color:#a45b46}
+.footer-professional-link>svg{flex:0 0 30px;width:30px;height:34px;color:#d9bc7a}
+.footer-professional-copy{display:flex;flex-direction:column;gap:2px;min-width:0;overflow-wrap:anywhere}
+.footer-professional-kind{font:8px/1.5 var(--font-ui);letter-spacing:1.3px;color:#d8c9a4}
+.footer-professional-title{font:24px/1.12 var(--font-display);color:#f3e8d3}
+.footer-professional-note{font:italic 14px/1.3 var(--font-display);color:#d8c9a4}
+.footer-professional-arrow{margin-left:auto;flex-shrink:0;font:24px/1 var(--font-display);color:#d9bc7a}
 .footer-professional-link:focus-visible{outline:2px solid #e3c483;outline-offset:4px}
-@media(max-width:700px){.footer-professional{grid-template-columns:1fr;gap:15px;padding-top:20px}.footer-professional-link{padding:24px 28px;gap:13px}.footer-professional-title{font-size:26px}.footer-professional-link>svg{flex-basis:25px;width:25px}.footer-professional-kind{font-size:7px;letter-spacing:1px}}
+@media(max-width:700px){.footer-professional{grid-template-columns:1fr;gap:15px;padding-top:20px}.footer-professional-link{padding:14px 28px;gap:13px}.footer-professional-title{font-size:22px}.footer-professional-link>svg{flex-basis:25px;width:25px}.footer-professional-kind{font-size:7px;letter-spacing:1px}}
 @media(prefers-reduced-motion:reduce){.footer-professional-link{transition:none}}
+
+.footer-professional-note{display:none}
