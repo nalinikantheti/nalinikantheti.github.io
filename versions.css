@@ -1,8 +1,0 @@
-.design-versions{display:flex;align-items:center;justify-content:center;gap:6px;min-height:39px;padding:5px 12px;background:#f4ecd9;border-bottom:1px solid #b79b6266;font:11px/1.4 'DM Sans',sans-serif;color:#59603e;position:relative;z-index:16}
-.design-versions>span{font-size:8px;letter-spacing:1.8px;margin-right:10px}
-.design-versions a{padding:5px 13px;border:1px solid transparent;border-radius:18px}
-.design-versions a[aria-current=page]{border-color:#b79b6288;background:#fff9ed;color:#a45b46}
-.design-versions a:hover{background:#fff9ed}
-.design-versions a:focus-visible{outline:2px solid #a45b46;outline-offset:2px}
-/* The comparison strip remains full-width despite the legacy mobile nav rules. */
-.design-versions{width:100%;max-width:none;flex-wrap:nowrap}
