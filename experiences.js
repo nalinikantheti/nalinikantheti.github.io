@@ -16,6 +16,7 @@ function navigateMedium(route, {focus = true, updateHistory = true, fromRouter =
     panel.querySelector('.panel-toolbar>span').textContent = mediumLabels[route];
   }
   if (route !== 'music') document.querySelectorAll('.video-frame video').forEach(video => video.pause());
+  if (route !== 'home') document.querySelector('#featured-timelapse')?.pause();
   currentRoute = route;
   if (updateHistory && location.hash !== `#${route}`) history.pushState({route}, '', `#${route}`);
   document.title = `${mediumLabels[route]} — Nalini Kantheti`;
@@ -32,27 +33,3 @@ document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener(
   const route = anchorRoutes[link.getAttribute('href').slice(1)];
   if (route) {event.preventDefault(); navigateMedium(route);}
 }));
-// A small, visitor-controlled exhibition. No autoplay changes while reading.
-const featuredWorks = ['beetle','bird','frog','fish'].map(id => works.find(work => work.id === id));
-let featuredIndex = 0;
-const livingImage = document.querySelector('#living-image');
-document.querySelectorAll('[data-art-step]').forEach(button => button.addEventListener('click', () => {
-  featuredIndex = (featuredIndex + Number(button.dataset.artStep) + featuredWorks.length) % featuredWorks.length;
-  const work = featuredWorks[featuredIndex];
-  livingImage.src = work.image; livingImage.alt = work.title;
-  document.querySelector('#living-title').textContent = displayTitle(work.title);
-  document.querySelector('#art-position').textContent = `${String(featuredIndex+1).padStart(2,'0')} / 04`;
-  if(!reducedMotion.matches) livingImage.animate([{opacity:.15,transform:'scale(.97)'},{opacity:1,transform:'scale(1)'}],{duration:550,easing:'ease-out'});
-}));
-document.querySelector('.featured-art').addEventListener('click', () => openArt(featuredWorks[featuredIndex]));
-// Fine-pointer movement adds depth; touch and reduced-motion users keep a still layout.
-if (matchMedia('(pointer:fine)').matches && !reducedMotion.matches) {
-  const art = document.querySelector('.living-art');
-  art.addEventListener('pointermove', event => {
-    const rect = art.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - .5;
-    const y = (event.clientY - rect.top) / rect.height - .5;
-    art.style.transform = `perspective(1000px) rotateY(${x*3}deg) rotateX(${-y*3}deg)`;
-  });
-  art.addEventListener('pointerleave', () => art.style.transform = '');
-}
