@@ -1,0 +1,78 @@
+/* This palette and graphic treatment are isolated to the alternate document. */
+body.graphic-paisley{--paper:#fbf7ef;--cream:#fbf7ef;--ink:#39366e;--plum:#39366e;--wine:#bc5b74;--rose:#bc5b74;--teal:#39366e;--gold:#dda021;--antique-gold:#dda021;--line:#39366e33;--clay:#e28a1d;background:#fbf7ef;color:#39366e;border:0;outline:0;background-image:none}
+.graphic-paisley .design-versions{background:#39366e;color:#fbf7ef;border:0}
+.graphic-paisley .design-versions a[aria-current=page]{background:#fbf7ef;color:#39366e;border-color:#fbf7ef}.graphic-paisley .design-versions a:hover{background:#fbf7ef;color:#39366e}
+.graphic-paisley .experience-header{height:96px;padding:0 5%;background:#fbf7ef;color:#39366e;border:0;border-bottom:1px solid #39366e22}
+.graphic-paisley .artist-name{font:500 clamp(25px,2.5vw,38px)/1 'Cormorant Garamond',Georgia;letter-spacing:-1px;color:#39366e}
+.graphic-paisley .experience-header nav{gap:27px}.graphic-paisley .experience-header nav button{font:600 17px/1.2 var(--font-display);letter-spacing:0;text-transform:none;color:#39366e}
+.graphic-paisley .experience-header nav button[aria-pressed=true],.graphic-paisley .experience-header nav button:hover{color:#a23b59}
+.graphic-paisley .experience-header nav button[aria-pressed=true]:after{background:#a23b59;color:#a23b59}
+.graphic-paisley .simple-lotus{color:#bc5b74}
+.graphic-paisley .home-panel{padding:0;background:#fbf7ef}
+.graphic-paisley .landing-intro{grid-template-columns:.9fr 1.1fr;gap:36px;padding:45px 5% 40px;min-height:0;background:none;border:0;align-items:center}
+.graphic-paisley .landing-intro:before,.graphic-paisley .landing-intro:after{display:none}
+.graphic-paisley .landing-copy{min-width:0}.graphic-paisley .landing-copy .eyebrow{font:10px/1.8 var(--font-ui);letter-spacing:2px;color:#39366e;margin-bottom:36px}
+.graphic-paisley .landing-copy h1{font-size:clamp(66px,7.5vw,118px);line-height:.9;letter-spacing:-.045em;color:#39366e;margin:0 0 34px}
+.graphic-paisley .landing-copy h1 em{color:#39366e}
+.graphic-paisley .landing-disciplines{font:24px/1.35 var(--font-display);max-width:420px;color:#39366e;margin-bottom:26px}
+.graphic-paisley .explore-button{min-width:0;gap:25px;background:none;border:0;border-bottom:2px solid #bc5b74;outline:0;padding:7px 0 10px;font:600 23px/1.2 var(--font-display);letter-spacing:0;text-transform:none;color:#a23b59}
+.graphic-paisley .explore-button:hover{background:none;filter:none;color:#bc3029}
+.graphic-paisley .bookshelf-door{color:#39366e;opacity:.55}.graphic-paisley .bookshelf-door:hover{opacity:.9}
+.graphic-paisley-poster{margin:0;min-width:0}.graphic-paisley-poster img{display:block;width:100%;height:auto;aspect-ratio:760/800}
+.graphic-paisley-poster figcaption{font:9px/1.6 var(--font-ui);letter-spacing:2.8px;text-align:right;color:#39366e;margin-top:12px}
+.paisley-featured-section{padding:30px 5% 40px;border-top:1px solid #39366e22;border-bottom:1px solid #39366e22;background:#f6efdf}
+.graphic-paisley .paisley-featured-section .living-art{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,.8fr);gap:10px 35px;max-width:780px;margin:auto;align-items:center}
+.graphic-paisley .paisley-featured-section .featured-art{grid-row:1/3;height:260px;min-width:0;width:100%;padding:14px;background:transparent url('assets/graphic-paisley/frames/card-chamfer.svg') center/100% 100% no-repeat!important}
+.graphic-paisley .living-art .featured-art img{background:#fcf7ee}
+.graphic-paisley .paisley-featured-section .living-caption{display:flex;flex-direction:column;align-items:flex-start;gap:18px;margin:0;color:#39366e;font-size:31px}
+.graphic-paisley .living-caption:before{display:none}.graphic-paisley .living-caption>span{margin:0}
+.graphic-paisley .art-controls{gap:14px}.graphic-paisley .art-controls button{color:#39366e;border-color:#bc5b74}.graphic-paisley #art-position,.graphic-paisley .art-hint{color:#655d83}
+.graphic-paisley .paisley-featured-section .art-hint{grid-column:2;align-self:start;max-width:220px;margin:0}
+.graphic-paisley .medium-portals{padding-top:45px;background:none}
+.graphic-paisley .medium-portal,.graphic-paisley .medium-portal:hover{background-image:url('assets/graphic-paisley/frames/arch-rose.svg');color:#39366e}
+.graphic-paisley .medium-portal:nth-child(3n+2){background-image:url('assets/graphic-paisley/frames/arch-indigo.svg')}.graphic-paisley .medium-portal:nth-child(3n){background-image:url('assets/graphic-paisley/frames/arch-saffron.svg')}
+.graphic-paisley .medium-portal:before,.graphic-paisley .medium-portal:after{display:none}
+.graphic-paisley .portal-label{color:#39366e}.graphic-paisley .portal-caption{color:#514b70}.graphic-paisley .portal-action{color:#9f2d4c;border-color:#bc5b7480}.graphic-paisley .card-floret{color:#bc3029}
+.graphic-paisley .panel-toolbar,.graphic-paisley .section-top,.graphic-paisley .writing-intro{border-color:#39366e33}
+.graphic-paisley .panel-toolbar{background:#fbf7ef;color:#39366e}.graphic-paisley h2,.graphic-paisley h3{color:#39366e}
+.graphic-paisley .section-top h2 em,.graphic-paisley .writing-intro h2 em,.graphic-paisley .artist-statement h2 em{color:#bc5b74}
+.graphic-paisley .eyebrow{color:#9f2d4c}.graphic-paisley .text-link,.graphic-paisley .chapter-next button{color:#9f2d4c}
+.graphic-paisley .art-card .meta{color:#655d83}.graphic-paisley #art-description{color:#39366e}.graphic-paisley #art-credit,.graphic-paisley .gallery-category-description{color:#655d83}
+.graphic-paisley .art-frame{background-image:url('assets/graphic-paisley/frames/card-chamfer.svg')!important}.graphic-paisley .art-card:nth-child(even) .art-frame{background-image:url('assets/graphic-paisley/frames/card-scallop.svg')!important}
+.graphic-paisley .filters button,.graphic-paisley .art-photo-views button,.graphic-paisley .academic-control-actions button:not(#paper-close),.graphic-paisley #story-expand,.graphic-paisley #story-restart,.graphic-paisley .story-reader-bottom button,.graphic-paisley .paper-reader-bottom button,.graphic-paisley .video-retry button{background-image:url('assets/graphic-paisley/frames/button-cream.svg');color:#39366e}
+.graphic-paisley .filters button[data-filter].active,.graphic-paisley .art-photo-views button[aria-pressed=true]{background-image:url('assets/graphic-paisley/frames/button-green.svg');color:#fbf7ef}
+.graphic-paisley .button:not(.explore-button),.graphic-paisley #inquiry-form .button{background-image:url('assets/graphic-paisley/frames/button-rose.svg');color:#fff8ef}
+.graphic-paisley .paper-card,.graphic-paisley .favorite-book{background-image:url('assets/graphic-paisley/frames/card-chamfer.svg');color:#39366e}
+.graphic-paisley .story-card{background-image:url('assets/graphic-paisley/frames/card-scallop.svg');color:#39366e}
+.graphic-paisley .paper-card .paper-description,.graphic-paisley .story-card .story-blurb,.graphic-paisley .book-author{color:#514b70}
+.graphic-paisley .paper-card .paper-kind,.graphic-paisley .paper-action,.graphic-paisley .story-card .story-genres,.graphic-paisley .book-number{color:#9f2d4c}
+.graphic-paisley .paper-time,.graphic-paisley .paper-place,.graphic-paisley .story-card .story-reading-time{color:#655d83}
+.graphic-paisley .writing-tabs button{color:#514b70}.graphic-paisley .writing-tabs button[aria-selected=true]{color:#9f2d4c;border-color:#bc5b74}
+.graphic-paisley .words{background:#f5e7e7}.graphic-paisley .closing{background:#39366e;color:#fbf7ef}
+.graphic-paisley .closing h2,.graphic-paisley .closing p{color:#fbf7ef}.graphic-paisley .closing .eyebrow,.graphic-paisley .closing .text-link{color:#f5ce77}
+.graphic-paisley .henna-photo{background-image:url('assets/graphic-paisley/frames/card-chamfer.svg')}.graphic-paisley .henna-card:nth-child(even) .henna-photo{background-image:url('assets/graphic-paisley/frames/card-scallop.svg')}
+.graphic-paisley .henna-caption h3{color:#39366e}.graphic-paisley .henna-caption p{color:#514b70}
+.graphic-paisley .featured-film{background:#f4e8e6;color:#39366e;border-color:#bc5b74;outline-color:#bc5b7444}.graphic-paisley .film-credits dt{color:#9f2d4c}.graphic-paisley .film-info .text-link,.graphic-paisley .video-card>.text-link{color:#9f2d4c}
+.graphic-paisley .video-frame{border-color:#39366e;outline-color:#bc5b7466}
+.graphic-paisley .inquire{background:#f4e8e6}.graphic-paisley .inquire>div>p{color:#514b70}.graphic-paisley .artist-statement>p:not(.eyebrow){color:#514b70}
+.graphic-paisley #inquiry-form,.graphic-paisley .contact-portrait,.graphic-paisley .hero-portrait,.graphic-paisley #poem-artwork{background-image:url('assets/graphic-paisley/frames/card-chamfer.svg')}
+.graphic-paisley #inquiry-form{color:#39366e}.graphic-paisley input,.graphic-paisley select,.graphic-paisley textarea{border-color:#39366e55;color:#39366e;background:#fffaf2}
+.graphic-paisley #inquiry-form .text-link{color:#9f2d4c}.graphic-paisley .form-note{color:#655d83}
+.graphic-paisley dialog{background:#fcf7ee;color:#39366e;border-color:#39366e55}.graphic-paisley dialog::backdrop{background:#27234cda}
+.graphic-paisley dialog .close{background:#fcf7ee;border-color:#bc5b74;color:#39366e}
+.graphic-paisley .story-reader-toolbar,.graphic-paisley .story-reader-bottom,.graphic-paisley .academic-toolbar{background:#fcf7ee;color:#39366e;border-color:#39366e33}
+.graphic-paisley #story-reader-body,.graphic-paisley .academic-prose{color:#39366e}.graphic-paisley #story-reader-body .story-scene-heading,.graphic-paisley .academic-prose h2,.graphic-paisley .academic-prose h3{color:#39366e}
+.graphic-paisley .academic-prose a{color:#9f2d4c}.graphic-paisley #paper-description,.graphic-paisley #story-reader-blurb{color:#655d83;border-color:#39366e33}
+.graphic-paisley .copy-link[data-copy]{color:#9f2d4c}.graphic-paisley .hero-portrait figcaption,.graphic-paisley #poem-artwork figcaption{color:#655d83}
+.graphic-paisley footer{background:#39366e;color:#fbf7ef;border-top:5px double #dda021}.graphic-paisley footer:before,.graphic-paisley footer:after{display:none}
+.graphic-paisley footer .social-grid>a{background-image:url('assets/graphic-paisley/frames/card-dark.svg')}.graphic-paisley footer .social-grid h3{color:#fbf7ef}.graphic-paisley footer .social-grid .eyebrow,.graphic-paisley footer small{color:#f5ce77}
+.graphic-paisley footer .wordmark{color:#fbf7ef}.graphic-paisley footer small{border-color:#fbf7ef55}
+@media(max-width:1100px){.graphic-paisley .experience-header{padding:0 4%}.graphic-paisley .experience-header nav{gap:17px}.graphic-paisley .experience-header nav button{font-size:16px}.graphic-paisley .landing-intro{gap:24px}}
+@media(max-width:900px){.graphic-paisley .landing-intro{grid-template-columns:1fr 1fr;padding:35px 5%}.graphic-paisley .landing-copy h1{font-size:clamp(58px,8vw,74px)}.graphic-paisley .landing-disciplines{font-size:21px}.graphic-paisley .landing-copy .eyebrow{font-size:8px;letter-spacing:1.3px;margin-bottom:25px}.graphic-paisley .experience-header{height:auto;min-height:100px;flex-wrap:wrap;gap:17px;padding:18px 5%}.graphic-paisley .artist-name{font-size:30px}.graphic-paisley .experience-header nav{margin-left:auto;gap:18px}.graphic-paisley .simple-lotus{display:none}}
+@media(max-width:700px){.graphic-paisley .experience-header{justify-content:center;gap:16px;padding:18px 4%}.graphic-paisley .experience-header nav{width:100%;justify-content:center;margin:0;gap:12px 19px}.graphic-paisley .experience-header nav button{font-size:16px}.graphic-paisley .landing-intro{grid-template-columns:1fr;padding:36px 7% 28px;gap:28px}.graphic-paisley .landing-copy h1{font-size:clamp(65px,13.5vw,88px);max-width:100%;margin-bottom:23px}.graphic-paisley .landing-copy .eyebrow{margin-bottom:25px}.graphic-paisley .landing-disciplines{font-size:23px;max-width:100%}.graphic-paisley .explore-button{font-size:22px;min-height:44px}.graphic-paisley .bookshelf-nook{margin-top:13px}.graphic-paisley .graphic-paisley-poster{max-width:500px;width:100%;margin:auto}.graphic-paisley .paisley-featured-section .living-art{grid-template-columns:minmax(0,1fr);max-width:360px;gap:16px}.graphic-paisley .paisley-featured-section .featured-art{grid-row:auto;height:290px}.graphic-paisley .paisley-featured-section .living-caption{flex-direction:row;align-items:center;justify-content:space-between;font-size:24px;gap:10px}.graphic-paisley .paisley-featured-section .art-hint{grid-column:1;max-width:none}.graphic-paisley .medium-portals{padding-top:30px}.graphic-paisley .medium-portal{max-width:420px}.graphic-paisley .living-caption>span{min-width:0}.graphic-paisley .art-controls{gap:8px}}
+body.experience.miniature.graphic-paisley{border:0;outline:0;background:#fbf7ef;color:#39366e}
+.graphic-paisley #home-title:focus,.graphic-paisley .experience-panel h2[tabindex="-1"]:focus{outline:none}
+.graphic-paisley #academic-dialog,.graphic-paisley #story-dialog,.graphic-paisley #art-dialog,.graphic-paisley #poem-dialog{background:#fcf7ee;color:#39366e;border-color:#39366e55}
+.graphic-paisley .academic-prose h1,.graphic-paisley .academic-prose h4,.graphic-paisley .academic-prose h5,.graphic-paisley .academic-prose h6{color:#39366e}
+.graphic-paisley .academic-prose blockquote{color:#655d83;border-color:#bc5b74}
+.graphic-paisley .art-controls button{display:grid;place-items:center;width:36px;height:36px;min-width:36px;padding:0;flex:0 0 36px;font:20px/1 var(--font-ui)}
