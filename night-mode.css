@@ -42,3 +42,8 @@ html[data-theme=dark] body.experience.miniature #inquiry-form :is(input,select,t
 html[data-theme=dark] body.experience.miniature .featured-timelapse{background:transparent url("assets/frames/night-card-chamfer.svg") center/100% 100% no-repeat}
 html[data-theme=dark] body.experience.miniature #featured-timelapse{background:#172c22}
 html[data-theme=dark] body.experience.miniature .button,html[data-theme=dark] body.experience.miniature #inquiry-form .button{background:transparent url('assets/frames/night-button.svg') center/100% 100% no-repeat!important}
+
+/* The symbol offers the destination: moon for night, sun for day. */
+.night-mode-toggle .theme-sun{display:none}
+html[data-theme=dark] .night-mode-toggle .theme-moon{display:none}
+html[data-theme=dark] .night-mode-toggle .theme-sun{display:block}
