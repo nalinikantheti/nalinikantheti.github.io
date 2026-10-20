@@ -1,0 +1,44 @@
+/* A fine-line crescent stays available in the shared header. */
+.miniature .night-mode-toggle{display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;min-width:48px;min-height:58px;padding:0 4px;border:0;background:transparent;color:#8b633c;cursor:pointer}
+.night-mode-toggle svg{display:block;width:40px;height:40px;transition:transform .25s}
+.night-mode-caption{font:8px/1.2 var(--font-ui);letter-spacing:1px;text-transform:uppercase}
+.night-mode-toggle:hover svg{transform:rotate(-12deg)}
+.night-mode-toggle:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:24px}
+@media(max-width:700px){.miniature .experience-header{padding-right:52px;padding-left:12px}.miniature .night-mode-toggle{position:absolute;right:8px;top:8px;min-width:40px;min-height:48px}.night-mode-toggle svg{width:34px;height:34px}.miniature .experience-header nav{margin-right:-36px}}
+@media(prefers-reduced-motion:reduce){.night-mode-toggle svg{transition:none}.night-mode-toggle:hover svg{transform:none}}
+html[data-theme=dark]{color-scheme:dark;background:#172c22}
+html[data-theme=dark] body.experience.miniature.experience{--paper:#1c3227;--ink:#f3ead7;--cream:#f3ead7;--plum:#f3ead7;--wine:#e1c797;--rose:#e1c797;--clay:#d1bd9a;--gold:#d6c59c;--antique-gold:#d6c59c;--line:#8d9675;background:#1c3227;color:#f3ead7;border-color:#536d51;outline-color:#c5b78f}
+/* Text colors also cover expanded readers and content rendered after navigation. */
+html[data-theme=dark] body.experience.miniature :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,label,figcaption,a,button,select,input,textarea,blockquote,small,em,strong,span){color:#f3ead7!important}
+html[data-theme=dark] body.experience.miniature :is(.eyebrow,.meta,.art-hint,.paper-kind,.paper-type,.paper-time,.paper-place,.paper-action,.story-action,.portal-action,.book-number,.resume-dates,.resume-resource-links a,.text-link,.night-mode-toggle,.simple-lotus,.card-floret,.bookshelf-door,.footer-professional-arrow){color:#e1c797!important}
+html[data-theme=dark] body.experience.miniature :is(.portal-caption,.portal-description,.landing-disciplines,.paper-description,.book-author,.resume-organization,.resume-qualification,.footer-professional-kind,.footer-professional-note){color:#d3d6c4!important}
+html[data-theme=dark] body.experience.miniature :is(.experience-header,.panel-toolbar,.academic-toolbar,.story-reader-toolbar,.chapter-progress-row){background:#172c22;color:#f3ead7;border-color:#b9b18b66}
+html[data-theme=dark] body.experience.miniature :is(.section,.home-panel,.medium-portals,.words,.inquire,.featured-film,.film-feature,.closing,.bookshelf-section){background:#1c3227;color:#f3ead7!important}
+html[data-theme=dark] body.experience.miniature .landing-intro{background:linear-gradient(90deg,#1c3227ee,#243d31ee),url('assets/garden-frame.png') center/cover}
+html[data-theme=dark] body.experience.miniature :is(dialog,#story-dialog,#academic-dialog){background:#1c3227;color:#f3ead7;border-color:#c5b78f}
+html[data-theme=dark] dialog::backdrop{background:#07160fe0}
+html[data-theme=dark] body.experience.miniature :is(.close,.story-close,#paper-close,#chapter-select){background:#243d31;color:#f3ead7!important}
+html[data-theme=dark] body.experience.miniature :is(input,select,textarea,.share-url){background:#14281e;border-color:#b9b18b88;color:#f3ead7!important}
+html[data-theme=dark] body.experience.miniature :is(input,textarea)::placeholder{color:#c4c9b6;opacity:1}
+html[data-theme=dark] body.experience.miniature .medium-portal{background-image:url('assets/frames/night-card-arch.svg')}
+html[data-theme=dark] body.experience.miniature :is(.paper-card,.favorite-book,.resume-skill,#inquiry-form,.contact-portrait,.hero-portrait,#poem-artwork,.henna-photo){background:transparent url('assets/frames/night-card-chamfer.svg') center/100% 100% no-repeat}
+html[data-theme=dark] body.experience.miniature :is(.story-card,.henna-card:nth-child(even) .henna-photo){background-image:url('assets/frames/night-card-scallop.svg')}
+html[data-theme=dark] body.experience.miniature :is(.art-frame,.featured-art){background:transparent url('assets/frames/night-card-chamfer.svg') center/100% 100% no-repeat!important}
+html[data-theme=dark] body.experience.miniature .art-card:nth-child(even) .art-frame{background-image:url('assets/frames/night-card-scallop.svg')!important}
+html[data-theme=dark] body.experience.miniature :is(.button,.filters button,.art-photo-views button,.academic-control-actions button:not(#paper-close),#story-expand,#story-restart,.story-reader-bottom button,.paper-reader-bottom button,.video-retry button,.resume-document-link,.footer-professional-link){background:transparent url('assets/frames/night-button.svg') center/100% 100% no-repeat;color:#f3ead7!important}
+html[data-theme=dark] body.experience.miniature :is(.filters button.active,.art-photo-views button[aria-pressed=true]){filter:brightness(1.3);color:#fff6df}
+html[data-theme=dark] body.experience.miniature .copy-link[data-copy]{background-image:url('assets/frames/night-share-arch.svg')}
+html[data-theme=dark] body.experience.miniature .copy-link::before{filter:brightness(2) saturate(.35)}
+html[data-theme=dark] body.experience.miniature footer{background:#14271e;color:#f3ead7!important}
+html[data-theme=dark] body.experience.miniature .experience-header nav button[aria-pressed=true]:after{background:#172c22;color:#e1c797!important}
+html[data-theme=dark] body.experience.miniature .experience-header nav button[aria-pressed=true]{color:#e1c797!important}
+html[data-theme=dark] body.experience.miniature :is(.experience-header nav button,.writing-tabs button):hover{color:#e1c797!important}
+html[data-theme=dark] body.experience.miniature :is(a,button,input,select,textarea):focus-visible{outline-color:#ead3a0}
+html[data-theme=dark] body.experience.miniature .resume-entry:before{background:#1c3227;color:#e1c797!important}
+html[data-theme=dark] body.experience.miniature .art-video-label{background:#1c3227e8}
+html[data-theme=dark] body.experience.miniature .poem-card{background:#243d31}
+
+html[data-theme=dark] body.experience.miniature #inquiry-form :is(input,select,textarea){background:#14281e!important;color:#f3ead7!important;border-color:#b9b18b88}
+html[data-theme=dark] body.experience.miniature .featured-timelapse{background:transparent url("assets/frames/night-card-chamfer.svg") center/100% 100% no-repeat}
+html[data-theme=dark] body.experience.miniature #featured-timelapse{background:#172c22}
+html[data-theme=dark] body.experience.miniature .button,html[data-theme=dark] body.experience.miniature #inquiry-form .button{background:transparent url('assets/frames/night-button.svg') center/100% 100% no-repeat!important}
