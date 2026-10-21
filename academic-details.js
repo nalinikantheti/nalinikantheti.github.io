@@ -24,9 +24,9 @@ const academicDetails = {
     type: 'Popular Writing',
     description: 'A case for embracing humor and the ability to laugh at ourselves, examining social rules around laughter, the fear of looking foolish, and humor’s role in human connection.'
   },
-  'paper-six': {
-    title: 'Examining Limits of Psychiatric Care Infrastructure Through a South Asian Lens',
-    type: 'Literature Review',
-    description: 'A review of psychiatric institutions, recurrent hospitalization, and gaps in continuity of care through South Asian patients’ and families’ experiences. It considers culturally responsive, community-oriented alternatives to crisis-driven systems.'
+  'two-sides-of-the-same-coin': {
+    title: 'Two Sides of the Same Coin',
+    type: 'Personal Narrative',
+    description: 'A personal narrative about a mother-daughter relationship, bipolar disorder, and a shift from shame and blame toward understanding.'
   }
 };

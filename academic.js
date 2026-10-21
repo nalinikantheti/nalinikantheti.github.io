@@ -1,5 +1,5 @@
 // Keep the featured reading order independent of document imports and saved paper IDs.
-const academicOrder = ['paper-six','paper-five','paper-one','paper-two','paper-three','paper-four'];
+const academicOrder = ['two-sides-of-the-same-coin','paper-five','paper-one','paper-two','paper-three','paper-four'];
 academicPapers.sort((a,b)=>academicOrder.indexOf(a.id)-academicOrder.indexOf(b.id));
 const academicReader = document.querySelector('#academic-dialog');
 let currentPaper = 0;

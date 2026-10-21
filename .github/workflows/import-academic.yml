@@ -25,9 +25,11 @@ jobs:
             ('paper-three', '1iiGtGG5SfqFm9_WhNE7gyrOBFgkmjJFhunXUVi4gpfk'),
             ('paper-four', '167_yCrfdfD5r1rAU09ixeICNq8c8V3FNB3ykoZNGF8k'),
             ('paper-five', '1mtu_fDwhlM--q3VD-4RR_HlDhHuUrQOkRFdB2h6kIOc'),
-            ('paper-six', '1jeyfAS_H-bbfmUSBul5JIbe2CbZth7YseDjXZymisW0'),
           ]
-          papers, errors = [], []
+          # Preserve locally supplied pieces when refreshing the linked documents.
+          existing = Path('academic-data.js').read_text()
+          local_pieces = [paper for paper in json.loads(existing.split('=', 1)[1].strip().removesuffix(';')) if paper['id'] == 'two-sides-of-the-same-coin']
+          papers, errors = local_pieces, []
           def read(url):
               with urlopen(Request(url, headers={'User-Agent':'Mozilla/5.0'}), timeout=60) as response:
                   return response.read(30 * 1024 * 1024)
