@@ -76,7 +76,27 @@
     if(route==='writing')selectWritingTab(document.querySelector(writingTabId(subsection)));
     if(route==='work'&&subsection){const filter=[...document.querySelectorAll('[data-filter]')].find(button=>slug(button.dataset.filter)===subsection);filter?.click();}
   }
+  const shareDialog = document.querySelector('#reading-share-dialog');
+  const shareButton = document.querySelector('#reading-share-copy');
+  const dismissShare = () => shareDialog.close();
+  document.querySelector('#reading-share-close').addEventListener('click', dismissShare);
+  document.querySelector('#reading-share-dismiss').addEventListener('click', dismissShare);
   window.siteRouter={
+    finishedReading(kind) {
+      const paper = kind === 'paper';
+      const reader = document.querySelector(paper ? '#academic-dialog' : '#story-dialog');
+      const path = paper ? `writing/academic/${paperSlug(currentPaper)}` : `writing/stories/${storySlug(currentStory)}`;
+      const pieceTitle = paper ? academicTitle(academicPapers[currentPaper]) : stories[currentStory].title;
+      reader.addEventListener('close', () => {
+        shareDialog.querySelector('.share-url')?.remove();
+        shareButton.dataset.copy = kind;
+        shareButton.dataset.sharePath = path;
+        shareButton.textContent = paper ? 'Copy Paper Link' : 'Copy Story Link';
+        document.querySelector('#reading-share-piece').textContent = pieceTitle;
+        shareDialog.showModal();
+        document.body.classList.add('modal-open');
+      }, {once:true});
+    },
     navigate(path,{focus=true,replace=false}={}) {write(path,{replace});apply({focus});},
     artFilterChanged(filter) {if(!applying)write(filter==='All'?'work':`work/${slug(filter)}`);},
     artOpened(work) {
@@ -111,9 +131,9 @@
   }
   document.querySelectorAll('[data-copy]').forEach(button=>button.addEventListener('click',async()=>{
     const kind=button.dataset.copy;
-    const path=kind==='paper'?`writing/academic/${paperSlug(currentPaper)}`:kind==='art'?artPath:kind==='poem'?poemPath:kind==='story'?`writing/stories/${storySlug(currentStory)}`:`writing/stories/${storySlug(currentStory)}/chapter/${currentChapter+1}`;
+    const path=button.dataset.sharePath || (kind==='paper'?`writing/academic/${paperSlug(currentPaper)}`:kind==='art'?artPath:kind==='poem'?poemPath:kind==='story'?`writing/stories/${storySlug(currentStory)}`:`writing/stories/${storySlug(currentStory)}/chapter/${currentChapter+1}`);
     const url=new URL(location.href);url.search='';url.hash=path;
-    try {await navigator.clipboard.writeText(url.href);const label=button.textContent;button.textContent='Link Copied ✓';setTimeout(()=>button.textContent=label,1800);announce(kind==='chapter'?'Chapter link copied':'Link copied');}
+    try {await navigator.clipboard.writeText(url.href);const label=button.textContent;button.textContent='Link Copied ✓';setTimeout(()=>{if(button.textContent==='Link Copied ✓')button.textContent=label;},1800);announce(kind==='chapter'?'Chapter link copied':'Link copied');}
     catch {
       // Keep a selectable URL inside the modal when clipboard permission is unavailable.
       let field=button.parentElement.querySelector('.share-url');

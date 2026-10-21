@@ -164,7 +164,7 @@ function changeChapter(index) {savePlace();renderStory(currentStory,index,{focus
 document.querySelector('#previous-chapter').addEventListener('click',()=>{if(currentChapter>0)changeChapter(currentChapter-1);});
 document.querySelector('#next-chapter').addEventListener('click',()=>{
   if(currentChapter<storyScenes[currentStory].length-1)changeChapter(currentChapter+1);
-  else {savePlace({completed:true,ratio:1});reader.close();}
+  else {savePlace({completed:true,ratio:1});window.siteRouter?.finishedReading('story');reader.close();}
 });
 document.querySelector('#chapter-select').addEventListener('change',event=>changeChapter(Number(event.target.value)));
 document.querySelector('#story-restart').addEventListener('click',()=>renderStory(currentStory,0,{focus:true}));

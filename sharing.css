@@ -7,3 +7,18 @@
 @media(prefers-reduced-motion:reduce){.copy-link[data-copy]{transition:none}}
 
 .copy-link[data-copy="story"]::before,.copy-link[data-copy="paper"]::before{width:19px;height:19px;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%20fill%3D%22none%22%20stroke%3D%22%23a45b46%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M50%2077C27%2061%2029%2036%2050%2017c21%2019%2023%2044%200%2060Z%22%2F%3E%3Cpath%20d%3D%22M50%2077C25%2077%2012%2057%2015%2038c21%201%2031%2016%2035%2039ZM50%2077c25%200%2038-20%2035-39-21%201-31%2016-35%2039Z%22%2F%3E%3Cpath%20d%3D%22M50%2077C27%2090%208%2076%205%2059c12-2%2023%202%2030%208m15%2010c23%2013%2042-1%2045-18-12-2-23%202-30%208M36%2089h28%22%2F%3E%3C%2Fsvg%3E")}
+
+/* A small invitation after finishing, with the same writing-link arch. */
+#reading-share-dialog{width:min(480px,92vw);padding:28px 36px 36px;text-align:center;border:3px double #b79b62;border-radius:70px 70px 18px 18px}
+#reading-share-dialog .close{position:static;float:right}
+.reading-share-lotus{display:block;width:40px;height:40px;margin:18px auto 12px;color:#a45b46}
+#reading-share-dialog h2{clear:both;font-size:34px;line-height:1.1;margin:14px 0;font-style:normal}
+#reading-share-piece{font:italic 21px/1.4 var(--font-display);overflow-wrap:anywhere}
+.reading-share-actions{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:20px}
+.reading-share-actions .copy-link{margin:0;max-width:100%}
+#reading-share-dismiss{background:none;border:0;padding:12px;min-height:44px;color:#65704f;font:12px var(--font-ui);cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.reading-share-actions .share-url{max-width:100%}
+@media(max-width:400px){#reading-share-dialog{padding:22px 24px 28px}#reading-share-dialog h2{font-size:29px}}
+.miniature #reading-share-dialog{background:#f3e8d3;color:#35422b}
+.miniature #reading-share-dialog h2{color:inherit}
+.reading-share-lotus{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
