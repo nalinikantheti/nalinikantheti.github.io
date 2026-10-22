@@ -116,7 +116,7 @@
     const path=hash();
     if(dialog.id==='art-dialog'&&(path.startsWith('art/')||path.startsWith('henna/photo/'))){const base=path.startsWith('art/')?'work':'henna';const filter=document.querySelector('[data-filter].active')?.dataset.filter;write(base==='work'&&filter&&filter!=='All'?`work/${slug(filter)}`:base,{replace:true});title(mediumLabels[base]);}
     if(dialog.id==='poem-dialog'&&path.startsWith('writing/poetry/')){write('writing/poetry',{replace:true});title('Writing');}
-    if(dialog.id==='academic-dialog'&&path.startsWith('writing/academic/')){write('writing/academic',{replace:true});title('Academic Writing');}
+    if(dialog.id==='academic-dialog'&&path.startsWith('writing/academic/')){write('writing/academic',{replace:true});title('Essays & Reflections');}
     if(dialog.id==='story-dialog'&&path.startsWith('writing/stories/')){write('writing/stories',{replace:true});title('Writing');}
     document.body.classList.toggle('modal-open',Boolean(document.querySelector('dialog[open]')));
   }));

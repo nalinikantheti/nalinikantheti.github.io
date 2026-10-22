@@ -27,6 +27,7 @@ const academicDetails = {
   'two-sides-of-the-same-coin': {
     title: 'Two Sides of the Same Coin',
     type: 'Personal Narrative',
+    artwork: {image: 'assets/mother.webp', alt: 'Portrait of Nalini’s mother in a green blouse, surrounded by flowers', caption: 'I’m Not Her · Acrylic on Canvas'},
     description: 'A personal narrative about a mother-daughter relationship, bipolar disorder, and a shift from shame and blame toward understanding.'
   }
 };

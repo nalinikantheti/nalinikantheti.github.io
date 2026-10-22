@@ -86,6 +86,12 @@ function openAcademic(index,{resume=true}={}) {
   document.querySelector('#paper-description').textContent=details.description;
   document.querySelector('#paper-reading-time').textContent=`${academicMinutes(paper)} minute read`;
   const body=document.querySelector('#paper-body');body.replaceChildren(academicFragment(paper));
+  if(details.artwork) {
+    const figure=document.createElement('figure');figure.className='essay-artwork';
+    const image=document.createElement('img');image.src=details.artwork.image;image.alt=details.artwork.alt;
+    const caption=document.createElement('figcaption');caption.textContent=details.artwork.caption;
+    figure.append(image,caption);body.prepend(figure);
+  }
   showDialog(academicReader);academicReader.scrollTop=0;setPaperProgress(ratio);
   const restore=()=>{
     if(version!==paperVersion||!academicReader.open)return;
